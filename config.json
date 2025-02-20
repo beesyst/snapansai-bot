@@ -1,0 +1,35 @@
+{
+    "telegram": {
+        "bot_token": "7851414934:AAEXWK3fguivIM_1ntvBi_M153ZtppQViw0",
+        "chat_id": 85424801
+    },
+    "deepseek": {
+        "api_key": "your_deepseek_api_key",
+        "api_url": "https://api.deepseek.com/v1/chat/completions"
+    },
+    "screenshot": {
+        "save_path": "screenshot.png",
+        "hotkey": "alt+s",
+        "os": "auto",
+        "commands": {
+            "ubuntu": {
+                "unset": "unset GTK_PATH",
+                "install": "sudo apt update && sudo apt install -y gnome-screenshot",
+                "check": "gnome-screenshot --version",
+                "run": "/usr/bin/gnome-screenshot -f"
+            },
+            "windows": {
+                "install": "pip install pyautogui",
+                "run": "pyautogui.screenshot('screenshot.png')"
+            },
+            "macos": {
+                "install": "brew install screenresolution",
+                "run": "screencapture -x ~/Pictures/screenshot.png"
+            },
+            "fedora": {
+                "install": "sudo dnf install -y gnome-screenshot",
+                "run": "/usr/bin/gnome-screenshot -f"
+            }
+        }
+    }
+}
