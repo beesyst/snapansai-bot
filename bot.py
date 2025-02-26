@@ -1,90 +1,81 @@
 import asyncio
 import logging
+import json
+import requests
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message
 from ai_api import process_image
-import json
-import requests
-import os
 
-# 🔹 Загрузка конфигурации из config.json
-CONFIG_PATH = "config.json"
+# 🔹 Логирование в bot.log
+logging.basicConfig(
+    filename='bot.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
+# 🔹 Конфиг-менеджер
+class ConfigHandler:
+    CONFIG_PATH = "config.json"
 
-def load_config():
-    with open(CONFIG_PATH, "r") as file:
-        return json.load(file)
+    @classmethod
+    def load(cls):
+        with open(cls.CONFIG_PATH, "r") as file:
+            return json.load(file)
 
+    @classmethod
+    def save(cls, config):
+        with open(cls.CONFIG_PATH, "w") as file:
+            json.dump(config, file, indent=4)
+        logging.info("✅ chat_id успешно сохранен в config.json!")
 
-def save_config(config):
-    with open(CONFIG_PATH, "w") as file:
-        json.dump(config, file, indent=4)
-    logging.info("✅ chat_id успешно сохранен в config.json!")
-
-
-config = load_config()
-TELEGRAM_TOKEN = config["telegram"]["bot_token"]
-
-logging.basicConfig(level=logging.INFO)
-bot = Bot(token=TELEGRAM_TOKEN)
+config = ConfigHandler.load()
+bot = Bot(token=config["telegram"]["bot_token"])
 dp = Dispatcher()
 
-
-# 🔧 Универсальная обработка изображений (photo или document)
+# 🔹 Обработка изображения
 async def process_received_file(file_id, chat_id):
-    file_info = await bot.get_file(file_id)
-    file_path = file_info.file_path
-    file_url = f"https://api.telegram.org/file/bot{TELEGRAM_TOKEN}/{file_path}"
-    logging.info(f"🌐 Ссылка на изображение: {file_url}")
+    try:
+        file_info = await bot.get_file(file_id)
+        file_url = f"https://api.telegram.org/file/bot{config['telegram']['bot_token']}/{file_info.file_path}"
+        logging.info(f"🌐 Загружаю изображение: {file_url}")
 
-    img_data = requests.get(file_url).content
-    with open("received.png", "wb") as handler:
-        handler.write(img_data)
+        with requests.Session() as session:
+            img_data = session.get(file_url).content
 
-    await bot.send_message(
-        chat_id, "🖼️ Изображение загружено. Обрабатываю через OpenAI..."
-    )
-    response = await process_image("received.png")
-    await bot.send_message(chat_id, f"🤖 Ответ ИИ:\n{response}")
+        with open("received.png", "wb") as handler:
+            handler.write(img_data)
+        logging.info("✅ Изображение сохранено локально.")
 
+        await bot.send_message(chat_id, "🖼️ Изображение загружено. Обрабатываю через ИИ...")
+        response = await process_image("received.png")
+        await bot.send_message(chat_id, f"🤖 Ответ ИИ:\n{response}")
+        logging.info("✅ Обработка изображения завершена.")
+    except Exception as e:
+        logging.error(f"❌ Ошибка обработки изображения: {e}")
+        await bot.send_message(chat_id, f"⚠️ Ошибка обработки изображения: {e}")
 
+# 🔹 Обработка /start
 @dp.message(F.text == "/start")
 async def handle_start(message: Message):
     chat_id = message.chat.id
-    config = load_config()
     if config["telegram"].get("chat_id") != chat_id:
         config["telegram"]["chat_id"] = chat_id
-        save_config(config)
-        logging.info(f"✅ chat_id {chat_id} автоматически сохранен!")
+        ConfigHandler.save(config)
+        logging.info(f"✅ chat_id {chat_id} автоматически сохранен.")
     await message.answer("👋 Привет! Отправь мне изображение, и я его обработаю.")
 
-
+# 🔹 Обработка медиа
 @dp.message(F.photo | F.document)
 async def handle_media(message: Message):
     chat_id = message.chat.id
-
-    # ✅ Проверяем: изображение в photo или document
-    if message.photo:
-        file_id = message.photo[-1].file_id
-    elif message.document:
-        file_id = message.document.file_id
-    else:
-        await message.answer("⚠️ Я не смог определить тип файла.")
-        return
-
+    file_id = message.photo[-1].file_id if message.photo else message.document.file_id
     logging.info(f"📝 Получен file_id: {file_id}")
     await process_received_file(file_id, chat_id)
 
-
-@dp.message(F.text)
-async def echo_message(message: Message):
-    await message.answer("📩 Отправь изображение, чтобы я его обработал!")
-
-
+# 🔹 Основной запуск бота
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
-
 
 if __name__ == "__main__":
     asyncio.run(main())

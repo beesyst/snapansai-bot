@@ -1,42 +1,42 @@
 {
-    "telegram": {
-        "bot_token": "",
-        "chat_id": 0
-    },
-    "deepseek": {
-        "api_key": "your_deepseek_api_key",
-        "api_url": "https://api.deepseek.com/v1/chat/completions",
-        "model": "deepseek-chat"
-    },
-    "openai": {
-        "api_key": "",
-        "api_url": "https://api.openai.com/v1/chat/completions",
-        "model": "gpt-4o-mini",
-        "prompt": "\u0415\u0441\u043b\u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0442\u0435\u0441\u0442, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0435 \u043e\u0442\u0432\u0435\u0442\u044b \u0438 \u0432\u044b\u0434\u0430\u0439 \u0438\u0445 \u043a\u0440\u0430\u0442\u043a\u043e. \u0415\u0441\u043b\u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0438\u043d\u043e\u0435 \u2014 \u043e\u043f\u0438\u0448\u0438 \u0435\u0433\u043e, \u0438\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u044f \u0438\u043d\u0444\u043e\u0448\u0443\u043c."
-    },
-    "screenshot": {
-        "save_path": "screenshot.png",
-        "hotkey": "alt+s",
-        "os": "auto",
-        "commands": {
-            "ubuntu": {
-                "unset": "unset GTK_PATH",
-                "install": "sudo apt update && sudo apt install -y gnome-screenshot",
-                "check": "gnome-screenshot --version",
-                "run": "/usr/bin/gnome-screenshot -f"
-            },
-            "windows": {
-                "install": "pip install pyautogui",
-                "run": "pyautogui.screenshot('screenshot.png')"
-            },
-            "macos": {
-                "install": "brew install screenresolution",
-                "run": "screencapture -x ~/Pictures/screenshot.png"
-            },
-            "fedora": {
-                "install": "sudo dnf install -y gnome-screenshot",
-                "run": "/usr/bin/gnome-screenshot -f"
-            }
-        }
+  "telegram": {
+    "bot_token": "",
+    "chat_id": 0
+  },
+  "deepseek": {
+    "api_key": "your_deepseek_api_key",
+    "api_url": "https://api.deepseek.com/v1/chat/completions",
+    "model": "deepseek-chat"
+  },
+  "openai": {
+    "api_key": "",
+    "api_url": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-4o-mini",
+    "prompt": "Если изображение содержит тест или задачу, сначала дай правильный ответ, а затем лаконично объясни почему так получилось. Если это что-то другое — кратко опиши, игнорируя инфошум."
+  },
+  "screenshot": {
+    "save_path": "screenshot.png",
+    "hotkey": "alt+s",
+    "os": "auto",
+    "commands": {
+      "ubuntu": {
+        "unset": "unset GTK_PATH",
+        "install": "sudo apt update && sudo apt install -y gnome-screenshot",
+        "check": "gnome-screenshot --version",
+        "run": "/usr/bin/gnome-screenshot -f"
+      },
+      "windows": {
+        "install": "pip install pyautogui",
+        "run": "pyautogui.screenshot('screenshot.png')"
+      },
+      "macos": {
+        "install": "brew install screenresolution",
+        "run": "screencapture -x ~/Pictures/screenshot.png"
+      },
+      "fedora": {
+        "install": "sudo dnf install -y gnome-screenshot",
+        "run": "/usr/bin/gnome-screenshot -f"
+      }
     }
+  }
 }

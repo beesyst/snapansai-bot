@@ -1,171 +1,181 @@
-INFO:aiogram.dispatcher:Start polling
-INFO:aiogram.dispatcher:Run polling for bot @SnapAnsAIBot id=7851414934 - 'SnapAnsAI Bot'
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
-WARNING:aiogram.dispatcher:Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('149.154.167.220', 443), [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0)]
-WARNING:aiogram.dispatcher:Sleep for 1.409274 seconds and try again... (tryings = 1, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0), [Errno 113] Connect call failed ('149.154.167.220', 443)]
-WARNING:aiogram.dispatcher:Sleep for 1.704105 seconds and try again... (tryings = 2, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('149.154.167.220', 443), [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0)]
-WARNING:aiogram.dispatcher:Sleep for 2.220066 seconds and try again... (tryings = 3, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0), [Errno 113] Connect call failed ('149.154.167.220', 443)]
-WARNING:aiogram.dispatcher:Sleep for 2.818638 seconds and try again... (tryings = 4, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('149.154.167.220', 443), [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0)]
-WARNING:aiogram.dispatcher:Sleep for 3.611864 seconds and try again... (tryings = 5, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0), [Errno 113] Connect call failed ('149.154.167.220', 443)]
-WARNING:aiogram.dispatcher:Sleep for 4.835681 seconds and try again... (tryings = 6, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('149.154.167.220', 443), [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0)]
-WARNING:aiogram.dispatcher:Sleep for 5.010264 seconds and try again... (tryings = 7, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0), [Errno 113] Connect call failed ('149.154.167.220', 443)]
-WARNING:aiogram.dispatcher:Sleep for 5.167481 seconds and try again... (tryings = 8, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.035923 seconds and try again... (tryings = 9, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.926524 seconds and try again... (tryings = 10, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.017767 seconds and try again... (tryings = 11, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.993065 seconds and try again... (tryings = 12, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.133430 seconds and try again... (tryings = 13, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.029320 seconds and try again... (tryings = 14, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.993394 seconds and try again... (tryings = 15, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.067445 seconds and try again... (tryings = 16, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.994024 seconds and try again... (tryings = 17, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.883144 seconds and try again... (tryings = 18, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.016998 seconds and try again... (tryings = 19, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.012325 seconds and try again... (tryings = 20, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.907633 seconds and try again... (tryings = 21, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.901356 seconds and try again... (tryings = 22, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.204552 seconds and try again... (tryings = 23, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.079797 seconds and try again... (tryings = 24, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.067906 seconds and try again... (tryings = 25, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.960049 seconds and try again... (tryings = 26, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.131361 seconds and try again... (tryings = 27, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.955474 seconds and try again... (tryings = 28, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.105215 seconds and try again... (tryings = 29, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.044241 seconds and try again... (tryings = 30, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.932337 seconds and try again... (tryings = 31, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.836856 seconds and try again... (tryings = 32, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.916613 seconds and try again... (tryings = 33, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.984433 seconds and try again... (tryings = 34, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.136350 seconds and try again... (tryings = 35, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.862538 seconds and try again... (tryings = 36, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.020467 seconds and try again... (tryings = 37, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.020861 seconds and try again... (tryings = 38, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.138769 seconds and try again... (tryings = 39, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.118167 seconds and try again... (tryings = 40, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.977084 seconds and try again... (tryings = 41, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.959682 seconds and try again... (tryings = 42, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.993525 seconds and try again... (tryings = 43, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.992391 seconds and try again... (tryings = 44, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.045018 seconds and try again... (tryings = 45, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.014139 seconds and try again... (tryings = 46, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.913756 seconds and try again... (tryings = 47, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.029120 seconds and try again... (tryings = 48, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.076652 seconds and try again... (tryings = 49, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.891892 seconds and try again... (tryings = 50, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.047931 seconds and try again... (tryings = 51, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.010473 seconds and try again... (tryings = 52, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.036791 seconds and try again... (tryings = 53, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.043903 seconds and try again... (tryings = 54, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.934957 seconds and try again... (tryings = 55, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.902401 seconds and try again... (tryings = 56, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.042165 seconds and try again... (tryings = 57, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.915675 seconds and try again... (tryings = 58, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.137446 seconds and try again... (tryings = 59, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.017002 seconds and try again... (tryings = 60, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.778194 seconds and try again... (tryings = 61, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.117466 seconds and try again... (tryings = 62, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.994368 seconds and try again... (tryings = 63, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.921099 seconds and try again... (tryings = 64, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.975782 seconds and try again... (tryings = 65, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.930612 seconds and try again... (tryings = 66, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.033222 seconds and try again... (tryings = 67, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.971758 seconds and try again... (tryings = 68, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.019530 seconds and try again... (tryings = 69, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.976800 seconds and try again... (tryings = 70, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.981949 seconds and try again... (tryings = 71, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.080794 seconds and try again... (tryings = 72, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 4.950288 seconds and try again... (tryings = 73, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.015878 seconds and try again... (tryings = 74, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.053240 seconds and try again... (tryings = 75, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.153463 seconds and try again... (tryings = 76, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.088420 seconds and try again... (tryings = 77, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.152117 seconds and try again... (tryings = 78, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.033195 seconds and try again... (tryings = 79, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.114699 seconds and try again... (tryings = 80, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.051161 seconds and try again... (tryings = 81, bot id = 7851414934)
-ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
-WARNING:aiogram.dispatcher:Sleep for 5.178566 seconds and try again... (tryings = 82, bot id = 7851414934)
-WARNING:aiogram.dispatcher:Received SIGTERM signal
-INFO:aiogram.dispatcher:Polling stopped for bot @SnapAnsAIBot id=7851414934 - 'SnapAnsAI Bot'
-INFO:aiogram.dispatcher:Polling stopped
+2025-02-27 01:09:47,978 - INFO - Start polling
+2025-02-27 01:09:48,115 - INFO - Run polling for bot @SnapAnsAIBot id=7851414934 - 'SnapAnsAI Bot'
+2025-02-27 01:10:00,678 - INFO - ✅ chat_id успешно сохранен в config.json!
+2025-02-27 01:10:00,679 - INFO - ✅ chat_id 85424801 автоматически сохранен.
+2025-02-27 01:10:01,171 - INFO - Update id=759151724 is handled. Duration 498 ms by bot id=7851414934
+2025-02-27 01:10:19,990 - INFO - 🚀 Ожидаем горячую клавишу: alt+s...
+2025-02-27 01:10:19,990 - INFO - 🧹 Папка session_temp очищена.
+2025-02-27 01:10:27,301 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:10:27.385: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:10:27.386: Failed to load module "canberra-gtk-module"
+2025-02-27 01:10:27,744 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011027.png
+2025-02-27 01:10:27,744 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:10:27,745 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011027.png
+2025-02-27 01:10:33,347 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:10:33,352 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:10:33,352 - INFO - 🤖 Ответ ИИ: Изображение показывает рабочую среду разработки Visual Studio Code с открытым проектом по созданию бота. В файле журнала (bot.log) представлены данные о запуске бота, его активности и некоторых ошибках, связанных с отсутствием модулей GTK.
+
+### Ответ:
+Ошибки, отображенные в журнале, связаны с отсутствующими модулями "canberra-gtk-module". 
+
+### Объяснение:
+Эта ошибка возникает, когда графическая библиотека не может найти соответствующие модули для обработки звуковых уведомлений. Эти модули не влияют на саму работу бота, но могут повлиять на пользовательский интерфейс, если таковой имеется.
+2025-02-27 01:10:34,789 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:10:34,790 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011027.png удален.
+2025-02-27 01:10:58,200 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:10:58.248: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:10:58.249: Failed to load module "canberra-gtk-module"
+2025-02-27 01:10:58,570 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011058.png
+2025-02-27 01:10:58,570 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:10:58,571 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011058.png
+2025-02-27 01:11:03,663 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:11:03,665 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:11:03,665 - INFO - 🤖 Ответ ИИ: Правильный ответ: **"Готово"**.
+
+Объяснение: Код перебирает символы в строке "Hi! I'm mister Robert:". Он ищет символ `\` (обратная косая черта), но такой символ в строке отсутствует. Поэтому условие `if j == "\\"` никогда не выполняется, и программа достигает блока `else`, выводя "Готово".
+2025-02-27 01:11:05,128 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:11:05,128 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011058.png удален.
+2025-02-27 01:11:26,737 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:11:26.792: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:11:26.793: Failed to load module "canberra-gtk-module"
+2025-02-27 01:11:27,109 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011126.png
+2025-02-27 01:11:27,110 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:11:27,110 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011126.png
+2025-02-27 01:11:31,358 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:11:31,361 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:11:31,361 - INFO - 🤖 Ответ ИИ: Правильный ответ: **Неограниченное количество**.
+
+Объяснение: В Python нет ограничений на количество библиотек, которые можно импортировать в одном проекте. Вы можете использовать столько библиотек, сколько необходимо для решения задач, которые вы ставите перед программой.
+2025-02-27 01:11:32,753 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:11:32,754 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011126.png удален.
+2025-02-27 01:11:40,213 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:11:40.268: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:11:40.269: Failed to load module "canberra-gtk-module"
+2025-02-27 01:11:40,591 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011140.png
+2025-02-27 01:11:40,591 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:11:40,592 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011140.png
+2025-02-27 01:11:45,007 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:11:45,010 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:11:45,010 - INFO - 🤖 Ответ ИИ: Правильный ответ: `print();`
+
+Объяснение: В Python функция `print()` используется для вывода информации в консоль. Другие упомянутые функции не являются стандартными функциями Python для этой задачи.
+2025-02-27 01:11:46,476 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:11:46,477 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011140.png удален.
+2025-02-27 01:11:53,142 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:11:53.194: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:11:53.195: Failed to load module "canberra-gtk-module"
+2025-02-27 01:11:53,535 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011153.png
+2025-02-27 01:11:53,536 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:11:53,537 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011153.png
+2025-02-27 01:12:00,563 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:12:00,565 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:12:00,565 - INFO - 🤖 Ответ ИИ: Правильный ответ: **Функция не может вызывать сама себя.**
+
+Объяснение: В приведённом коде ошибка заключается в том, что условие `if n == 0:` написано неправильно и должно быть `if n == 0:` вместо `if n == 0:`. Кроме того, сама функция `factorial` корректно вызывает себя при вычислении факториала.
+2025-02-27 01:12:02,344 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:12:02,344 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011153.png удален.
+2025-02-27 01:12:20,492 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:12:20.547: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:12:20.548: Failed to load module "canberra-gtk-module"
+2025-02-27 01:12:20,872 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011220.png
+2025-02-27 01:12:20,872 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:12:20,872 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011220.png
+2025-02-27 01:12:39,756 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:12:39,759 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:12:39,759 - INFO - 🤖 Ответ ИИ: Правильный ответ: **0**.
+
+Объяснение: В данном коде переменной `num` присваивается значение в зависимости от условия. Поскольку `x` равно 23, условие `x > 10` истинно, и, следовательно, `num` получит значение 0 (по конструкции `num = 0 if x > 10 else 11`). Затем выводится значение переменной `num`, которое равно 0.
+2025-02-27 01:12:41,166 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:12:41,168 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011220.png удален.
+2025-02-27 01:12:52,412 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:12:52.468: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:12:52.470: Failed to load module "canberra-gtk-module"
+2025-02-27 01:12:52,805 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011252.png
+2025-02-27 01:12:52,805 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:12:52,806 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011252.png
+2025-02-27 01:12:56,511 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:12:56,513 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:12:56,513 - INFO - 🤖 Ответ ИИ: Правильный ответ: **time**
+
+Объяснение: Библиотека `time` в Python предоставляет функции для работы с временем и таймерами, включая получение текущего времени и задержки в выполнении программы.
+2025-02-27 01:12:57,780 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:12:57,780 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011252.png удален.
+2025-02-27 01:13:03,132 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:13:03.188: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:13:03.189: Failed to load module "canberra-gtk-module"
+2025-02-27 01:13:03,520 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011303.png
+2025-02-27 01:13:03,520 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:13:03,520 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011303.png
+2025-02-27 01:13:07,750 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:13:07,752 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:13:07,752 - INFO - 🤖 Ответ ИИ: Правильный ответ: "Hi, John".
+
+Объяснение: В данном коде строка формируется с использованием оператора `%`. Переменная `name` содержит значение "John", поэтому при выполнении команды `print` выводится строка "Hi, John".
+2025-02-27 01:13:08,940 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:13:08,940 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011303.png удален.
+2025-02-27 01:13:14,264 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:13:14.318: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:13:14.320: Failed to load module "canberra-gtk-module"
+2025-02-27 01:13:14,807 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011314.png
+2025-02-27 01:13:14,808 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:13:14,808 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011314.png
+2025-02-27 01:13:19,810 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:13:19,811 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:13:19,812 - INFO - 🤖 Ответ ИИ: Правильный ответ: `var num = 2`.
+
+Объяснение: В Python правильный синтаксис для создания переменной требует, чтобы название переменной не начиналось с символа доллара ($) и не имело объявления типа (например, `int` или `float`) перед именем переменной, как в других языках программирования. Просто присвоение значения переменной, как в `num = 2`, является корректным.
+2025-02-27 01:13:21,064 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:13:21,065 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011314.png удален.
+2025-02-27 01:13:41,961 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:13:42.017: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:13:42.018: Failed to load module "canberra-gtk-module"
+2025-02-27 01:13:42,351 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011341.png
+2025-02-27 01:13:42,351 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:13:42,352 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011341.png
+2025-02-27 01:13:47,106 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:13:47,107 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:13:47,107 - INFO - 🤖 Ответ ИИ: Правильный ответ: «Числа: 1 и 3».
+
+Объяснение: Код перебирает числа от 0 до 4, и выводит только нечетные числа, так как `continue` пропускает четные (0, 2, 4) и не выполняет `print(i)` для них. Таким образом, на выходе будут только 1 и 3.
+2025-02-27 01:13:48,484 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:13:48,484 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011341.png удален.
+2025-02-27 01:13:58,425 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:13:58.477: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:13:58.478: Failed to load module "canberra-gtk-module"
+2025-02-27 01:13:58,808 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011358.png
+2025-02-27 01:13:58,808 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:13:58,809 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011358.png
+2025-02-27 01:14:05,896 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:14:05,898 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:14:05,898 - INFO - 🤖 Ответ ИИ: Правильный ответ: Использовать метод input()
+
+Объяснение: Метод `input()` в Python используется для получения данных от пользователя через стандартный ввод. Другие предложенные методы не предназначены для этой задачи: `get()` обычно используется для получения данных из специфичных объектов или API, `read()` и `readLine()` применяются для работы с файлами, а `cin()` — это синтаксис из языка C++ для ввода данных.
+2025-02-27 01:14:07,183 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:14:07,184 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011358.png удален.
+2025-02-27 01:14:46,268 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:14:46.323: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:14:46.324: Failed to load module "canberra-gtk-module"
+2025-02-27 01:14:46,634 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011446.png
+2025-02-27 01:14:46,634 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:14:46,634 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011446.png
+2025-02-27 01:14:52,916 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:14:52,919 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:14:52,919 - INFO - 🤖 Ответ ИИ: Правильный ответ: "В коде нет никаких ошибок".
+
+Объяснение: Функция `factorial` корректно реализует рекурсивный алгоритм для вычисления факториала. Она проверяет условие, если `n` равно 0, и возвращает 1. В противном случае она рекурсивно вызывает саму себя, что является правильной практикой для вычисления факториала.
+2025-02-27 01:14:54,271 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:14:54,271 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011446.png удален.
+2025-02-27 01:15:07,469 - INFO - 📸 Горячая клавиша нажата! Запускаю обработку...
+Gtk-Message: 01:15:07.519: Failed to load module "canberra-gtk-module"
+Gtk-Message: 01:15:07.520: Failed to load module "canberra-gtk-module"
+2025-02-27 01:15:07,825 - INFO - 📸 Скриншот сделан: session_temp/screenshot_20250227_011507.png
+2025-02-27 01:15:07,825 - INFO - 🧠 Обработка изображения через ИИ...
+2025-02-27 01:15:07,825 - INFO - 🖼️ Начинаю обработку изображения: session_temp/screenshot_20250227_011507.png
+2025-02-27 01:15:16,598 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 01:15:16,601 - INFO - ✅ Изображение успешно обработано.
+2025-02-27 01:15:16,601 - INFO - 🤖 Ответ ИИ: Правильный ответ: `num = float(2)`
+
+Объяснение: Эта строка корректно создает переменную `num`, присваивая ей значение числового типа с плавающей запятой (float). Остальные варианты не являются правильным синтаксисом для объявления переменной в Python.
+2025-02-27 01:15:17,966 - INFO - ✅ Результат успешно отправлен в Telegram.
+2025-02-27 01:15:17,967 - INFO - 🗑️ Скриншот session_temp/screenshot_20250227_011507.png удален.
+2025-02-27 01:17:04,792 - INFO - Update id=759151725 is handled. Duration 184 ms by bot id=7851414934

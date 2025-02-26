@@ -1,28 +1,51 @@
 import base64
-from openai import AsyncOpenAI
 import json
+import logging
+from openai import AsyncOpenAI
 
-# 🔹 Загружаем конфиг
-with open("config.json", "r") as config_file:
-    config = json.load(config_file)
+# 🔹 Настройка логирования
+logging.basicConfig(
+    filename='bot.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
-# 🔧 Строго берём данные из конфига
+# 🔹 Загрузка конфигурации
+def load_config(path="config.json"):
+    try:
+        with open(path, "r") as config_file:
+            return json.load(config_file)
+    except FileNotFoundError:
+        logging.error("❌ Файл config.json не найден.")
+        raise
+    except json.JSONDecodeError as e:
+        logging.error(f"❌ Ошибка разбора config.json: {e}")
+        raise
+
+config = load_config()
+
+# 🔧 Проверка обязательных параметров
 try:
     OPENAI_API_KEY = config["openai"]["api_key"]
     OPENAI_MODEL = config["openai"]["model"]
     PROMPT = config["openai"]["prompt"]
 except KeyError as e:
-    raise ValueError(f"❌ Ошибка: отсутствует параметр в config.json: {e}")
+    error_msg = f"❌ Ошибка: отсутствует параметр в config.json: {e}"
+    logging.error(error_msg)
+    raise ValueError(error_msg)
 
+# 🔹 Инициализация клиента OpenAI
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
-
+# 🔹 Обработка изображения
 async def process_image(image_path):
-    with open(image_path, "rb") as img:
-        image_bytes = img.read()
-    base64_image = base64.b64encode(image_bytes).decode("utf-8")
-
     try:
+        with open(image_path, "rb") as img:
+            image_bytes = img.read()
+        base64_image = base64.b64encode(image_bytes).decode("utf-8")
+
+        logging.info(f"🖼️ Начинаю обработку изображения: {image_path}")
+
         response = await client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
@@ -42,6 +65,12 @@ async def process_image(image_path):
             ],
             max_tokens=300,
         )
-        return response.choices[0].message.content
+
+        result = response.choices[0].message.content
+        logging.info("✅ Изображение успешно обработано.")
+        return result
+
     except Exception as e:
-        return f"❌ Ошибка обработки изображения: {str(e)}"
+        error_msg = f"❌ Ошибка обработки изображения: {str(e)}"
+        logging.error(error_msg)
+        return error_msg
