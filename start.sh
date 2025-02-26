@@ -87,8 +87,8 @@ if [ ! -f "venv/installed.lock" ] || [ requirements.txt -nt venv/installed.lock 
 fi
 
 # 🔹 Остановка старых процессов
-pkill -f bot.py
-pkill -f screenshot_sender.py
+pkill -9 -f bot.py
+pkill -9 -f screenshot_sender.py
 
 # 🔹 Запуск bot.py
 nohup python3 bot.py > bot.log 2>&1 &

@@ -1,4 +1,5 @@
-pyTelegramBotAPI
+aiogram
+openai
 requests
 pyautogui
 pynput

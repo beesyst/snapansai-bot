@@ -1,11 +1,18 @@
 {
     "telegram": {
-        "bot_token": "7851414934:AAEXWK3fguivIM_1ntvBi_M153ZtppQViw0",
-        "chat_id": 85424801
+        "bot_token": "",
+        "chat_id": 0
     },
     "deepseek": {
         "api_key": "your_deepseek_api_key",
-        "api_url": "https://api.deepseek.com/v1/chat/completions"
+        "api_url": "https://api.deepseek.com/v1/chat/completions",
+        "model": "deepseek-chat"
+    },
+    "openai": {
+        "api_key": "",
+        "api_url": "https://api.openai.com/v1/chat/completions",
+        "model": "gpt-4o-mini",
+        "prompt": "\u0415\u0441\u043b\u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0442\u0435\u0441\u0442, \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0435 \u043e\u0442\u0432\u0435\u0442\u044b \u0438 \u0432\u044b\u0434\u0430\u0439 \u0438\u0445 \u043a\u0440\u0430\u0442\u043a\u043e. \u0415\u0441\u043b\u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0438\u043d\u043e\u0435 \u2014 \u043e\u043f\u0438\u0448\u0438 \u0435\u0433\u043e, \u0438\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u044f \u0438\u043d\u0444\u043e\u0448\u0443\u043c."
     },
     "screenshot": {
         "save_path": "screenshot.png",

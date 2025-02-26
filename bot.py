@@ -1,87 +1,90 @@
+import asyncio
+import logging
+from aiogram import Bot, Dispatcher, F
+from aiogram.types import Message
+from ai_api import process_image
 import json
-import telebot
-import os
 import requests
-import time
+import os
 
-# Загрузка конфигурации
+# 🔹 Загрузка конфигурации из config.json
 CONFIG_PATH = "config.json"
 
 
 def load_config():
-    if not os.path.exists(CONFIG_PATH):
-        return {"telegram": {}}
-    with open(CONFIG_PATH, "r") as config_file:
-        return json.load(config_file)
+    with open(CONFIG_PATH, "r") as file:
+        return json.load(file)
 
 
 def save_config(config):
-    with open(CONFIG_PATH, "w") as config_file:
-        json.dump(config, config_file, indent=4)
-    print("✅ chat_id успешно записан в config.json!")
-
-
-def get_chat_id(token):
-    """Получает chat_id через getUpdates"""
-    url = f"https://api.telegram.org/bot{token}/getUpdates"
-    try:
-        response = requests.get(url).json()
-        if "result" in response and len(response["result"]) > 0:
-            chat_id = response["result"][-1]["message"]["chat"]["id"]
-            print(f"🔹 Автоматически получен chat_id: {chat_id}")
-            return chat_id
-    except Exception as e:
-        print(f"⚠ Ошибка получения chat_id: {e}")
-    return None
+    with open(CONFIG_PATH, "w") as file:
+        json.dump(config, file, indent=4)
+    logging.info("✅ chat_id успешно сохранен в config.json!")
 
 
 config = load_config()
-TOKEN = config.get("telegram", {}).get("bot_token")
-CHAT_ID = config.get("telegram", {}).get("chat_id")
+TELEGRAM_TOKEN = config["telegram"]["bot_token"]
 
-# Проверяем наличие bot_token
-if not TOKEN:
-    print("❌ Ошибка: bot_token не найден в config.json!")
-    exit(1)
-
-# Если chat_id отсутствует, получаем его через API
-if not CHAT_ID:
-    print("🔹 Определяем chat_id...")
-    CHAT_ID = get_chat_id(TOKEN)
-    if CHAT_ID:
-        config["telegram"]["chat_id"] = CHAT_ID
-        save_config(config)
-    else:
-        print(
-            "⚠ Не удалось получить chat_id. Отправьте /start боту и попробуйте снова."
-        )
-
-# Запуск бота
-bot = telebot.TeleBot(TOKEN)
+logging.basicConfig(level=logging.INFO)
+bot = Bot(token=TELEGRAM_TOKEN)
+dp = Dispatcher()
 
 
-@bot.message_handler(commands=["start"])
-def send_welcome(message):
+# 🔧 Универсальная обработка изображений (photo или document)
+async def process_received_file(file_id, chat_id):
+    file_info = await bot.get_file(file_id)
+    file_path = file_info.file_path
+    file_url = f"https://api.telegram.org/file/bot{TELEGRAM_TOKEN}/{file_path}"
+    logging.info(f"🌐 Ссылка на изображение: {file_url}")
+
+    img_data = requests.get(file_url).content
+    with open("received.png", "wb") as handler:
+        handler.write(img_data)
+
+    await bot.send_message(
+        chat_id, "🖼️ Изображение загружено. Обрабатываю через OpenAI..."
+    )
+    response = await process_image("received.png")
+    await bot.send_message(chat_id, f"🤖 Ответ ИИ:\n{response}")
+
+
+@dp.message(F.text == "/start")
+async def handle_start(message: Message):
     chat_id = message.chat.id
-    bot.send_message(chat_id, "👋 Привет! Отправь мне изображение, и я его обработаю.")
-
-    # Если chat_id еще не записан, сохраняем его
-    if not config["telegram"].get("chat_id"):
+    config = load_config()
+    if config["telegram"].get("chat_id") != chat_id:
         config["telegram"]["chat_id"] = chat_id
         save_config(config)
-        print(f"✅ chat_id {chat_id} автоматически сохранен!")
+        logging.info(f"✅ chat_id {chat_id} автоматически сохранен!")
+    await message.answer("👋 Привет! Отправь мне изображение, и я его обработаю.")
 
 
-@bot.message_handler(content_types=["photo"])
-def handle_screenshot(message):
-    file_id = message.photo[-1].file_id
-    file_info = bot.get_file(file_id)
-    downloaded_file = bot.download_file(file_info.file_path)
+@dp.message(F.photo | F.document)
+async def handle_media(message: Message):
+    chat_id = message.chat.id
 
-    with open("received.png", "wb") as img:
-        img.write(downloaded_file)
+    # ✅ Проверяем: изображение в photo или document
+    if message.photo:
+        file_id = message.photo[-1].file_id
+    elif message.document:
+        file_id = message.document.file_id
+    else:
+        await message.answer("⚠️ Я не смог определить тип файла.")
+        return
 
-    bot.send_message(message.chat.id, "✅ Изображение получено!")
+    logging.info(f"📝 Получен file_id: {file_id}")
+    await process_received_file(file_id, chat_id)
 
 
-bot.polling()
+@dp.message(F.text)
+async def echo_message(message: Message):
+    await message.answer("📩 Отправь изображение, чтобы я его обработал!")
+
+
+async def main():
+    await bot.delete_webhook(drop_pending_updates=True)
+    await dp.start_polling(bot)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

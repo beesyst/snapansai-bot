@@ -1,0 +1,171 @@
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @SnapAnsAIBot id=7851414934 - 'SnapAnsAI Bot'
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+WARNING:aiogram.dispatcher:Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('149.154.167.220', 443), [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0)]
+WARNING:aiogram.dispatcher:Sleep for 1.409274 seconds and try again... (tryings = 1, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0), [Errno 113] Connect call failed ('149.154.167.220', 443)]
+WARNING:aiogram.dispatcher:Sleep for 1.704105 seconds and try again... (tryings = 2, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('149.154.167.220', 443), [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0)]
+WARNING:aiogram.dispatcher:Sleep for 2.220066 seconds and try again... (tryings = 3, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0), [Errno 113] Connect call failed ('149.154.167.220', 443)]
+WARNING:aiogram.dispatcher:Sleep for 2.818638 seconds and try again... (tryings = 4, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('149.154.167.220', 443), [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0)]
+WARNING:aiogram.dispatcher:Sleep for 3.611864 seconds and try again... (tryings = 5, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0), [Errno 113] Connect call failed ('149.154.167.220', 443)]
+WARNING:aiogram.dispatcher:Sleep for 4.835681 seconds and try again... (tryings = 6, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('149.154.167.220', 443), [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0)]
+WARNING:aiogram.dispatcher:Sleep for 5.010264 seconds and try again... (tryings = 7, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Multiple exceptions: [Errno 113] Connect call failed ('2001:67c:4e8:f004::9', 443, 0, 0), [Errno 113] Connect call failed ('149.154.167.220', 443)]
+WARNING:aiogram.dispatcher:Sleep for 5.167481 seconds and try again... (tryings = 8, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.035923 seconds and try again... (tryings = 9, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.926524 seconds and try again... (tryings = 10, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.017767 seconds and try again... (tryings = 11, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.993065 seconds and try again... (tryings = 12, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.133430 seconds and try again... (tryings = 13, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.029320 seconds and try again... (tryings = 14, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.993394 seconds and try again... (tryings = 15, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.067445 seconds and try again... (tryings = 16, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.994024 seconds and try again... (tryings = 17, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.883144 seconds and try again... (tryings = 18, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.016998 seconds and try again... (tryings = 19, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.012325 seconds and try again... (tryings = 20, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.907633 seconds and try again... (tryings = 21, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.901356 seconds and try again... (tryings = 22, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.204552 seconds and try again... (tryings = 23, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.079797 seconds and try again... (tryings = 24, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.067906 seconds and try again... (tryings = 25, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.960049 seconds and try again... (tryings = 26, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.131361 seconds and try again... (tryings = 27, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.955474 seconds and try again... (tryings = 28, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.105215 seconds and try again... (tryings = 29, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.044241 seconds and try again... (tryings = 30, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.932337 seconds and try again... (tryings = 31, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.836856 seconds and try again... (tryings = 32, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.916613 seconds and try again... (tryings = 33, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.984433 seconds and try again... (tryings = 34, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.136350 seconds and try again... (tryings = 35, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.862538 seconds and try again... (tryings = 36, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.020467 seconds and try again... (tryings = 37, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.020861 seconds and try again... (tryings = 38, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.138769 seconds and try again... (tryings = 39, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.118167 seconds and try again... (tryings = 40, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.977084 seconds and try again... (tryings = 41, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.959682 seconds and try again... (tryings = 42, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.993525 seconds and try again... (tryings = 43, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.992391 seconds and try again... (tryings = 44, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.045018 seconds and try again... (tryings = 45, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.014139 seconds and try again... (tryings = 46, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.913756 seconds and try again... (tryings = 47, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.029120 seconds and try again... (tryings = 48, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.076652 seconds and try again... (tryings = 49, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.891892 seconds and try again... (tryings = 50, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.047931 seconds and try again... (tryings = 51, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.010473 seconds and try again... (tryings = 52, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.036791 seconds and try again... (tryings = 53, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.043903 seconds and try again... (tryings = 54, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.934957 seconds and try again... (tryings = 55, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.902401 seconds and try again... (tryings = 56, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.042165 seconds and try again... (tryings = 57, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.915675 seconds and try again... (tryings = 58, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.137446 seconds and try again... (tryings = 59, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.017002 seconds and try again... (tryings = 60, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.778194 seconds and try again... (tryings = 61, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.117466 seconds and try again... (tryings = 62, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.994368 seconds and try again... (tryings = 63, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.921099 seconds and try again... (tryings = 64, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.975782 seconds and try again... (tryings = 65, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.930612 seconds and try again... (tryings = 66, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.033222 seconds and try again... (tryings = 67, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.971758 seconds and try again... (tryings = 68, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.019530 seconds and try again... (tryings = 69, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.976800 seconds and try again... (tryings = 70, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.981949 seconds and try again... (tryings = 71, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.080794 seconds and try again... (tryings = 72, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 4.950288 seconds and try again... (tryings = 73, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.015878 seconds and try again... (tryings = 74, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.053240 seconds and try again... (tryings = 75, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.153463 seconds and try again... (tryings = 76, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.088420 seconds and try again... (tryings = 77, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.152117 seconds and try again... (tryings = 78, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.033195 seconds and try again... (tryings = 79, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.114699 seconds and try again... (tryings = 80, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.051161 seconds and try again... (tryings = 81, bot id = 7851414934)
+ERROR:aiogram.dispatcher:Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+WARNING:aiogram.dispatcher:Sleep for 5.178566 seconds and try again... (tryings = 82, bot id = 7851414934)
+WARNING:aiogram.dispatcher:Received SIGTERM signal
+INFO:aiogram.dispatcher:Polling stopped for bot @SnapAnsAIBot id=7851414934 - 'SnapAnsAI Bot'
+INFO:aiogram.dispatcher:Polling stopped
