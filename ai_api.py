@@ -3,14 +3,14 @@ import json
 import logging
 from openai import AsyncOpenAI
 
-# 🔹 Настройка логирования
+# Настройка логирования
 logging.basicConfig(
     filename='bot.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# 🔹 Загрузка конфигурации
+# Загрузка конфигурации
 def load_config(path="config.json"):
     try:
         with open(path, "r") as config_file:
@@ -24,7 +24,7 @@ def load_config(path="config.json"):
 
 config = load_config()
 
-# 🔧 Проверка обязательных параметров
+# Проверка обязательных параметров
 try:
     OPENAI_API_KEY = config["openai"]["api_key"]
     OPENAI_MODEL = config["openai"]["model"]
@@ -34,10 +34,10 @@ except KeyError as e:
     logging.error(error_msg)
     raise ValueError(error_msg)
 
-# 🔹 Инициализация клиента OpenAI
+# Инициализация клиента OpenAI
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
-# 🔹 Обработка изображения
+# Обработка изображения
 async def process_image(image_path):
     try:
         with open(image_path, "rb") as img:

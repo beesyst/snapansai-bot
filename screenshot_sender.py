@@ -8,14 +8,14 @@ from ai_api import process_image
 from pynput import keyboard
 import logging
 
-# 🔹 Логирование
+# Логирование
 logging.basicConfig(
     filename='bot.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# 🔹 Загрузка конфига
+# Загрузка конфига
 with open("config.json", "r") as f:
     config = json.load(f)
 
@@ -25,7 +25,7 @@ PHOTO_URL = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
 SESSION_DIR = "session_temp"
 os.makedirs(SESSION_DIR, exist_ok=True)
 
-# 🔹 Скриншот
+# Скриншот
 async def take_screenshot():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     screenshot_path = os.path.join(SESSION_DIR, f"screenshot_{timestamp}.png")
@@ -37,7 +37,7 @@ async def take_screenshot():
         logging.error("❌ Ошибка при создании скриншота.")
         return None
 
-# 🔹 Обработка и отправка скрина
+# Обработка и отправка скрина
 async def process_and_send(screenshot):
     try:
         logging.info("🧠 Обработка изображения через ИИ...")
@@ -62,7 +62,7 @@ async def process_and_send(screenshot):
     except Exception as e:
         logging.error(f"⚠ Ошибка при обработке или отправке: {e}")
 
-# 🔹 Основной цикл обработки горячих клавиш
+# Основной цикл обработки горячих клавиш
 async def main():
     logging.info(f"🚀 Ожидаем горячую клавишу: {config['screenshot']['hotkey']}...")
     pressed_keys = set()
@@ -94,7 +94,7 @@ async def main():
         )
         pressed_keys.discard(key_str)
 
-    # 🔹 Очистка предыдущих скриншотов
+    # Очистка предыдущих скриншотов
     for file in os.listdir(SESSION_DIR):
         try:
             os.remove(os.path.join(SESSION_DIR, file))
