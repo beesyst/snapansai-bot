@@ -4,9 +4,10 @@
     "chat_id": 0
   },
   "deepseek": {
-    "api_key": "your_deepseek_api_key",
+    "api_key": "",
     "api_url": "https://api.deepseek.com/v1/chat/completions",
-    "model": "deepseek-chat"
+    "model": "deepseek-chat",
+    "prompt": ""
   },
   "openai": {
     "api_key": "",
