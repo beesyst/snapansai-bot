@@ -5,46 +5,64 @@ from openai import AsyncOpenAI
 
 # Настройка логирования
 logging.basicConfig(
-    filename='bot.log',
+    filename="bot.log",
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
+# Пути к файлам конфигурации
+CONFIG_FILE = "config.json"
+LANG_FILE = "lang.json"
+
+
 # Загрузка конфигурации
-def load_config(path="config.json"):
+def load_json(path):
     try:
-        with open(path, "r") as config_file:
-            return json.load(config_file)
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
     except FileNotFoundError:
-        logging.error("❌ Файл config.json не найден.")
+        logging.error(f"❌ Файл {path} не найден.")
         raise
     except json.JSONDecodeError as e:
-        logging.error(f"❌ Ошибка разбора config.json: {e}")
+        logging.error(f"❌ Ошибка разбора {path}: {e}")
         raise
 
-config = load_config()
 
-# Проверка обязательных параметров
+config = load_json(CONFIG_FILE)
+lang_data = load_json(LANG_FILE)
+
+# Получаем язык из config.json, если его нет — крашим
+if "language" not in config or config["language"] not in lang_data:
+    error_msg = "❌ Ошибка: язык не указан в config.json или отсутствует в lang.json"
+    logging.error(error_msg)
+    raise ValueError(error_msg)
+
+LANG_SETTING = config["language"]
+
+# Берем промпт из lang.json на нужном языке
+PROMPT = lang_data[LANG_SETTING]["prompt"]
+
+# Проверка API-ключей
 try:
     OPENAI_API_KEY = config["openai"]["api_key"]
     OPENAI_MODEL = config["openai"]["model"]
-    PROMPT = config["openai"]["prompt"]
 except KeyError as e:
     error_msg = f"❌ Ошибка: отсутствует параметр в config.json: {e}"
     logging.error(error_msg)
     raise ValueError(error_msg)
 
-# Инициализация клиента OpenAI
+# Инициализация OpenAI клиента
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
-# Обработка изображения
+
+# Функция обработки изображения через OpenAI
 async def process_image(image_path):
     try:
         with open(image_path, "rb") as img:
             image_bytes = img.read()
         base64_image = base64.b64encode(image_bytes).decode("utf-8")
 
-        logging.info(f"🖼️ Начинаю обработку изображения: {image_path}")
+        logging.info(f"Начинаю обработку изображения: {image_path}")
 
         response = await client.chat.completions.create(
             model=OPENAI_MODEL,
@@ -52,7 +70,10 @@ async def process_image(image_path):
                 {
                     "role": "user",
                     "content": [
-                        {"type": "text", "text": PROMPT},
+                        {
+                            "type": "text",
+                            "text": PROMPT,
+                        },  # Используем локализованный промпт
                         {
                             "type": "image_url",
                             "image_url": {
@@ -67,8 +88,12 @@ async def process_image(image_path):
         )
 
         result = response.choices[0].message.content
-        logging.info("✅ Изображение успешно обработано.")
-        return result
+
+        # Убираем всё форматирование и отправляем только чистый текст
+        plain_result = result.replace("*", "").replace("_", "").replace("`", "")
+
+        logging.info("Изображение успешно обработано.")
+        return plain_result
 
     except Exception as e:
         error_msg = f"❌ Ошибка обработки изображения: {str(e)}"

@@ -3,17 +3,16 @@
     "bot_token": "",
     "chat_id": 0
   },
+  "language": "",
   "deepseek": {
     "api_key": "",
     "api_url": "https://api.deepseek.com/v1/chat/completions",
-    "model": "deepseek-chat",
-    "prompt": ""
+    "model": "deepseek-chat"
   },
   "openai": {
     "api_key": "",
     "api_url": "https://api.openai.com/v1/chat/completions",
-    "model": "gpt-4o-mini",
-    "prompt": "Если изображение содержит тест или задачу, сначала дай правильный ответ, а затем лаконично объясни почему так получилось. Если это что-то другое — кратко опиши, игнорируя инфошум."
+    "model": "gpt-4o-mini"
   },
   "screenshot": {
     "save_path": "screenshot.png",

@@ -8,10 +8,11 @@ from ai_api import process_image
 
 # Логирование в bot.log
 logging.basicConfig(
-    filename='bot.log',
+    filename="bot.log",
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format="%(asctime)s - %(levelname)s - %(message)s",
 )
+
 
 # Конфиг-менеджер
 class ConfigHandler:
@@ -28,9 +29,11 @@ class ConfigHandler:
             json.dump(config, file, indent=4)
         logging.info("✅ chat_id успешно сохранен в config.json!")
 
+
 config = ConfigHandler.load()
 bot = Bot(token=config["telegram"]["bot_token"])
 dp = Dispatcher()
+
 
 # Обработка изображения
 async def process_received_file(file_id, chat_id):
@@ -46,13 +49,16 @@ async def process_received_file(file_id, chat_id):
             handler.write(img_data)
         logging.info("✅ Изображение сохранено локально.")
 
-        await bot.send_message(chat_id, "🖼️ Изображение загружено. Обрабатываю через ИИ...")
+        await bot.send_message(
+            chat_id, "Изображение загружено. Обрабатываю через ИИ..."
+        )
         response = await process_image("received.png")
-        await bot.send_message(chat_id, f"🤖 Ответ ИИ:\n{response}")
+        await bot.send_message(chat_id, response)  # Без форматирования
         logging.info("✅ Обработка изображения завершена.")
     except Exception as e:
         logging.error(f"❌ Ошибка обработки изображения: {e}")
-        await bot.send_message(chat_id, f"⚠️ Ошибка обработки изображения: {e}")
+        await bot.send_message(chat_id, f"Ошибка обработки изображения: {e}")
+
 
 # Обработка /start
 @dp.message(F.text == "/start")
@@ -62,7 +68,8 @@ async def handle_start(message: Message):
         config["telegram"]["chat_id"] = chat_id
         ConfigHandler.save(config)
         logging.info(f"✅ chat_id {chat_id} автоматически сохранен.")
-    await message.answer("👋 Привет! Отправь мне изображение, и я его обработаю.")
+    await message.answer("Привет! Отправь мне изображение, и я его обработаю.")
+
 
 # Обработка медиа
 @dp.message(F.photo | F.document)
@@ -72,10 +79,12 @@ async def handle_media(message: Message):
     logging.info(f"📝 Получен file_id: {file_id}")
     await process_received_file(file_id, chat_id)
 
+
 # Основной запуск бота
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
