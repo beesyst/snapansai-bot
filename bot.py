@@ -17,20 +17,35 @@ logging.basicConfig(
 # Конфиг-менеджер
 class ConfigHandler:
     CONFIG_PATH = "config.json"
+    LANG_PATH = "lang.json"
 
     @classmethod
-    def load(cls):
+    def load_config(cls):
         with open(cls.CONFIG_PATH, "r") as file:
             return json.load(file)
 
     @classmethod
-    def save(cls, config):
+    def save_config(cls, config):
         with open(cls.CONFIG_PATH, "w") as file:
             json.dump(config, file, indent=4)
-        logging.info("✅ chat_id успешно сохранен в config.json!")
+        logging.info("chat_id успешно сохранен в config.json.")
+
+    @classmethod
+    def load_language(cls):
+        with open(cls.LANG_PATH, "r") as file:
+            return json.load(file)
 
 
-config = ConfigHandler.load()
+config = ConfigHandler.load_config()
+lang_data = ConfigHandler.load_language()
+LANG_SETTING = config["language"]
+
+
+# Функция перевода строк
+def translate(text):
+    return lang_data.get(LANG_SETTING, {}).get(text, text)
+
+
 bot = Bot(token=config["telegram"]["bot_token"])
 dp = Dispatcher()
 
@@ -40,24 +55,23 @@ async def process_received_file(file_id, chat_id):
     try:
         file_info = await bot.get_file(file_id)
         file_url = f"https://api.telegram.org/file/bot{config['telegram']['bot_token']}/{file_info.file_path}"
-        logging.info(f"🌐 Загружаю изображение: {file_url}")
 
         with requests.Session() as session:
             img_data = session.get(file_url).content
 
         with open("received.png", "wb") as handler:
             handler.write(img_data)
-        logging.info("✅ Изображение сохранено локально.")
+        logging.info(translate("Файл сохранен: received.png"))
 
         await bot.send_message(
-            chat_id, "Изображение загружено. Обрабатываю через ИИ..."
+            chat_id, translate("Изображение загружено. Обрабатываю через ИИ...")
         )
         response = await process_image("received.png")
-        await bot.send_message(chat_id, response)  # Без форматирования
-        logging.info("✅ Обработка изображения завершена.")
+        await bot.send_message(chat_id, response)
+        logging.info(translate("Обработка завершена."))
     except Exception as e:
-        logging.error(f"❌ Ошибка обработки изображения: {e}")
-        await bot.send_message(chat_id, f"Ошибка обработки изображения: {e}")
+        logging.error(translate(f"Ошибка обработки изображения: {e}"))
+        await bot.send_message(chat_id, translate(f"Ошибка обработки изображения: {e}"))
 
 
 # Обработка /start
@@ -66,9 +80,12 @@ async def handle_start(message: Message):
     chat_id = message.chat.id
     if config["telegram"].get("chat_id") != chat_id:
         config["telegram"]["chat_id"] = chat_id
-        ConfigHandler.save(config)
-        logging.info(f"✅ chat_id {chat_id} автоматически сохранен.")
-    await message.answer("Привет! Отправь мне изображение, и я его обработаю.")
+        ConfigHandler.save_config(config)
+        logging.info(f"chat_id {chat_id} {translate('автоматически сохранен.')}")
+
+    await message.answer(
+        translate("Привет! Отправь мне изображение, и я его обработаю.")
+    )
 
 
 # Обработка медиа
@@ -76,7 +93,6 @@ async def handle_start(message: Message):
 async def handle_media(message: Message):
     chat_id = message.chat.id
     file_id = message.photo[-1].file_id if message.photo else message.document.file_id
-    logging.info(f"📝 Получен file_id: {file_id}")
     await process_received_file(file_id, chat_id)
 
 

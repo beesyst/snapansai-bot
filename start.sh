@@ -61,27 +61,28 @@ OS_SETTING=$(jq -r '.screenshot.os' "$CONFIG_FILE")
 if [[ "$OS_SETTING" == "auto" || -z "$OS_SETTING" ]]; then
     UNAME_OUT="$(uname -s)"
     case "${UNAME_OUT}" in
-        Linux*)     OS_TYPE=ubuntu;;
-        Darwin*)    OS_TYPE=macos;;
-        CYGWIN*|MINGW*) OS_TYPE=windows;;
+        Linux*)     OS_TYPE="ubuntu";;
+        Darwin*)    OS_TYPE="macos";;
+        CYGWIN*|MINGW*) OS_TYPE="windows";;
         *)          OS_TYPE="unknown"
     esac
+    jq --arg os "$OS_TYPE" '.screenshot.os = $os' "$CONFIG_FILE" > tmp.json && mv tmp.json "$CONFIG_FILE"
 else
     OS_TYPE="$OS_SETTING"
 fi
+
 echo "$(translate "💽 ОС спалена:") $OS_TYPE"
+
 
 if [[ "$OS_TYPE" == "unknown" ]]; then
     echo "$(translate "❌ Ошибка: Чёт непонятная ОС. Подкинь параметр 'os' в config.json.")"
     exit 1
 fi
 
-# Скрытый сброс GTK_PATH для Ubuntu
-if [[ "$OS_TYPE" == "ubuntu" ]]; then
-    UNSET_CMD=$(jq -r ".screenshot.commands.$OS_TYPE.unset" "$CONFIG_FILE")
-    if [[ "$UNSET_CMD" != "null" && -n "$UNSET_CMD" ]]; then
-        eval "$UNSET_CMD" &> /dev/null
-    fi
+# Скрытый сброс
+UNSET_CMD=$(jq -r ".screenshot.commands.$OS_TYPE.unset" "$CONFIG_FILE")
+if [[ "$UNSET_CMD" != "null" && -n "$UNSET_CMD" ]]; then
+    eval "$UNSET_CMD" &> /dev/null
 fi
 
 # Проверка и установка скриншот-утилиты
@@ -145,6 +146,6 @@ while [[ "$API_KEY" == "null" || -z "$API_KEY" || ! "$API_KEY" =~ ^sk-[A-Za-z0-9
 done
 
 # Запуск screenshot_sender.py
-nohup python3 screenshot_sender.py > screenshot.log 2>&1 &
+nohup python3 screenshot_sender.py >> bot.log 2>&1 &
 HOTKEY=$(jq -r '.screenshot.hotkey' "$CONFIG_FILE")
 echo "$(translate "✅ Все четко! Жми") ${HOTKEY} $(translate "и скрин летит в Телегу.")"

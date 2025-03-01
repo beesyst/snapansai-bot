@@ -17,13 +17,13 @@
   "screenshot": {
     "save_path": "screenshot.png",
     "hotkey": "alt+s",
-    "os": "auto",
+    "os": "",
     "commands": {
       "ubuntu": {
         "unset": "unset GTK_PATH",
         "install": "sudo apt update && sudo apt install -y gnome-screenshot",
         "check": "gnome-screenshot --version",
-        "run": "/usr/bin/gnome-screenshot -f"
+        "run": "/usr/bin/gnome-screenshot -f screenshot.png"
       },
       "windows": {
         "install": "pip install pyautogui",
