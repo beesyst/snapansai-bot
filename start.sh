@@ -1,7 +1,8 @@
 #!/bin/bash
 
-CONFIG_FILE="config.json"
-LANG_FILE="lang.json"
+CONFIG_FILE="config/config.json"
+LANG_FILE="config/lang.json"
+LOG_FILE="logs/bot.log"
 
 # Функция обновления config.json
 update_config() {
@@ -56,7 +57,7 @@ while [[ "$BOT_TOKEN" == "null" || -z "$BOT_TOKEN" || ! "$BOT_TOKEN" =~ ^[0-9]+:
 done
 echo "$(translate "✅ Telegram Bot API token найден!")"
 
-# Определяем ОС
+# Определение ОС
 OS_SETTING=$(jq -r '.screenshot.os' "$CONFIG_FILE")
 if [[ "$OS_SETTING" == "auto" || -z "$OS_SETTING" ]]; then
     UNAME_OUT="$(uname -s)"
@@ -72,7 +73,6 @@ else
 fi
 
 echo "$(translate "💽 ОС спалена:") $OS_TYPE"
-
 
 if [[ "$OS_TYPE" == "unknown" ]]; then
     echo "$(translate "❌ Ошибка: Чёт непонятная ОС. Подкинь параметр 'os' в config.json.")"
@@ -115,11 +115,11 @@ if [ ! -f "venv/installed.lock" ] || [ requirements.txt -nt venv/installed.lock 
 fi
 
 # Остановка старых процессов
-pkill -9 -f bot.py
-pkill -9 -f screenshot_sender.py
+pkill -9 -f "python3 -m src.bot"
+pkill -9 -f "python3 -m src.screenshot_sender"
 
 # Запуск bot.py
-nohup python3 bot.py > bot.log 2>&1 &
+nohup python3 -m src.bot > "$LOG_FILE" 2>&1 &
 sleep 5
 
 # Получение chat_id
@@ -133,19 +133,19 @@ if [[ "$CHAT_ID" == "0" || "$CHAT_ID" == "null" ]]; then
     echo "$(translate "✅ chat_id четкий:") $CHAT_ID"
 fi
 
-# Проверка API-ключа OpenAI и DeepSeek
+# Запрос AI API-ключа
 API_KEY=$(jq -r '.openai.api_key' "$CONFIG_FILE")
 while [[ "$API_KEY" == "null" || -z "$API_KEY" || ! "$API_KEY" =~ ^sk-[A-Za-z0-9_-]{30,}$ ]]; do
     echo "$(translate "🔔 Йо! Подкинь API key от ИИ сюда, плиз:")"
     read -r KEY_INPUT
     if [[ "$KEY_INPUT" =~ ^sk-[A-Za-z0-9_-]{30,}$ ]]; then
         update_config ".openai.api_key = \"$KEY_INPUT\""
-        echo "$(translate "✅ OpenAI/DeepSeek ключ по кайфу влетел в config.json!")"
+        echo "$(translate "✅ API key по кайфу влетел в config.json!")"
         API_KEY="$KEY_INPUT"
     fi
 done
 
 # Запуск screenshot_sender.py
-nohup python3 screenshot_sender.py >> bot.log 2>&1 &
+nohup python3 -m src.screenshot_sender >> "$LOG_FILE" 2>&1 &
 HOTKEY=$(jq -r '.screenshot.hotkey' "$CONFIG_FILE")
 echo "$(translate "✅ Все четко! Жми") ${HOTKEY} $(translate "и скрин летит в Телегу.")"

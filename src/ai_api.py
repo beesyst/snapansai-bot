@@ -1,69 +1,31 @@
 import base64
-import json
-import logging
-from openai import AsyncOpenAI
 import asyncio
-
-# Настройка логирования
-logging.basicConfig(
-    filename="bot.log",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
-
-# Пути к файлам конфигурации
-CONFIG_FILE = "config.json"
-LANG_FILE = "lang.json"
-
-
-# Загрузка конфигурации
-def load_json(path):
-    try:
-        with open(path, "r", encoding="utf-8") as file:
-            return json.load(file)
-    except FileNotFoundError:
-        logging.error(f"Файл {path} не найден.")
-        raise
-    except json.JSONDecodeError as e:
-        logging.error(f"Ошибка разбора {path}: {e}")
-        raise
-
-
-config = load_json(CONFIG_FILE)
-lang_data = load_json(LANG_FILE)
-
-# Получаем язык из config.json, если его нет — крашим
-if "language" not in config or config["language"] not in lang_data:
-    error_msg = "Ошибка: язык не указан в config.json или отсутствует в lang.json"
-    logging.error(error_msg)
-    raise ValueError(error_msg)
-
-LANG_SETTING = config["language"]
+from openai import AsyncOpenAI
+from src.config_handler import ConfigHandler
+import logging
 
 
 # Функция перевода строк
 def translate(text):
-    return lang_data.get(LANG_SETTING, {}).get(text, text)
+    return ConfigHandler.translate(text)
 
 
-# Берем промпт из lang.json на нужном языке
-PROMPT = translate("prompt")
-
-# Проверка API-ключей
-try:
-    OPENAI_API_KEY = config["openai"]["api_key"]
-    OPENAI_MODEL = config["openai"]["model"]
-except KeyError as e:
-    error_msg = f"Ошибка: отсутствует параметр в config.json: {e}"
-    logging.error(error_msg)
-    raise ValueError(error_msg)
-
-# Инициализация OpenAI клиента
-client = AsyncOpenAI(api_key=OPENAI_API_KEY)
+# Промпт из lang.json на нужном языке
+ConfigHandler.update_language()
+PROMPT = ConfigHandler.translate("prompt")
 
 
-# Функция обработки изображения через OpenAI
+# Функция обработки изображения через ИИ
 async def process_image(image_path):
+    openai_key = ConfigHandler.get_value("openai.api_key")
+    openai_model = ConfigHandler.get_value("openai.model")
+
+    if not openai_key or not openai_model:
+        logging.error("Ошибка: отсутствует API-ключ. AI-функционал недоступен.")
+        return translate("Ошибка: API-ключ отсутствует. Проверь config.json.")
+
+    client = AsyncOpenAI(api_key=openai_key)
+
     max_retries = 3
     attempt = 0
 
@@ -73,10 +35,10 @@ async def process_image(image_path):
                 image_bytes = img.read()
             base64_image = base64.b64encode(image_bytes).decode("utf-8")
 
-            logging.info(translate("Начинаю обработку изображения") + f": {image_path}")
+            logging.info(f"{translate('Начинаю обработку изображения')}: {image_path}")
 
             response = await client.chat.completions.create(
-                model=OPENAI_MODEL,
+                model=openai_model,
                 messages=[
                     {
                         "role": "user",

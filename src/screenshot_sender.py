@@ -1,61 +1,57 @@
 import os
-import json
 import subprocess
-from datetime import datetime
 import requests
 import asyncio
-from ai_api import process_image
-from pynput import keyboard
 import logging
-
-# Логирование
-logging.basicConfig(
-    filename="bot.log",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
-
-# Загрузка конфига и языков
-with open("config.json", "r") as f:
-    config = json.load(f)
-with open("lang.json", "r") as f:
-    lang_data = json.load(f)
-
-LANG_SETTING = config["language"]
+from datetime import datetime
+from src.ai_api import process_image
+from src.config_handler import ConfigHandler
+from pynput import keyboard
 
 
 # Функция перевода строк
 def translate(text):
-    return lang_data.get(LANG_SETTING, {}).get(text, text)
+    return ConfigHandler.translate(text)
 
 
-TOKEN = config["telegram"]["bot_token"]
-CHAT_ID = config["telegram"]["chat_id"]
-PHOTO_URL = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
-SESSION_DIR = "session_temp"
+# Определение пути
+SESSION_DIR = "logs/session_temp"
 os.makedirs(SESSION_DIR, exist_ok=True)
 
-# Получаем ОС
-OS_TYPE = config["screenshot"]["os"]
+logging.info(f"SESSION_DIR: {SESSION_DIR}")
 
-# Проверяем, есть ли команда для ОС
-if OS_TYPE not in config["screenshot"]["commands"]:
+TOKEN = ConfigHandler.get_value("telegram.bot_token")
+CHAT_ID = ConfigHandler.get_value("telegram.chat_id")
+PHOTO_URL = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
+
+# Определение ОС и команды для скриншотов
+OS_TYPE = ConfigHandler.get_value("screenshot.os", "unknown")
+SCREENSHOT_CMD = ConfigHandler.get_value(f"screenshot.commands.{OS_TYPE}.run", "")
+
+if not SCREENSHOT_CMD:
     logging.error(translate("Ошибка: Неизвестная ОС. Укажите 'os' в config.json."))
     exit(1)
 
-# Команда для скриншота
-SCREENSHOT_CMD = config["screenshot"]["commands"][OS_TYPE]["run"]
+# Флаг от множественных вызовов
+processing = False
 
 
-# Скриншот
+# Функция снятия скрина
 async def take_screenshot():
+    global processing
+    if processing:
+        logging.info(
+            translate("❌ Уже выполняется обработка, повторное нажатие игнорируется.")
+        )
+        return None
+
+    processing = True
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     screenshot_path = os.path.join(SESSION_DIR, f"screenshot_{timestamp}.png")
 
     try:
-        # Подставляем путь к скриншоту в команду
-        run_command = SCREENSHOT_CMD.replace("screenshot.png", screenshot_path)
-        subprocess.run(run_command, shell=True, check=True)
+        command = SCREENSHOT_CMD.replace("screenshot.png", screenshot_path)
+        subprocess.run(command, shell=True, check=True)
 
         if os.path.exists(screenshot_path):
             logging.info(f"{translate('Скриншот сделан:')} {screenshot_path}")
@@ -63,11 +59,13 @@ async def take_screenshot():
     except subprocess.CalledProcessError as e:
         logging.error(f"{translate('Ошибка при создании скриншота:')} {e}")
 
+    processing = False
     return None
 
 
-# Обработка и отправка скрина
+# Функция обработки и отправки скрина
 async def process_and_send(screenshot):
+    global processing
     try:
         logging.info(translate("Обработка изображения через ИИ..."))
         result = await process_image(screenshot)
@@ -90,17 +88,20 @@ async def process_and_send(screenshot):
         logging.info(f"{translate('Скриншот удален:')} {screenshot}")
     except Exception as e:
         logging.error(f"{translate('Ошибка при обработке или отправке:')} {e}")
+    processing = False
 
 
 # Основной цикл обработки горячих клавиш
 async def main():
     logging.info(
-        f"{translate('Ожидаем горячую клавишу:')} {config['screenshot']['hotkey']}"
+        f"{translate('Ожидаем горячую клавишу:')} {ConfigHandler.get_value('screenshot.hotkey')}"
     )
-    pressed_keys = set()
-    HOTKEY = set(config["screenshot"]["hotkey"].lower().split("+"))
 
-    loop = asyncio.get_event_loop()
+    pressed_keys = set()
+    HOTKEY = set(
+        ConfigHandler.get_value("screenshot.hotkey", "alt+s").lower().split("+")
+    )
+    loop = asyncio.get_running_loop()
 
     async def on_trigger():
         screenshot = await take_screenshot()
@@ -116,6 +117,7 @@ async def main():
                 else str(key).split(".")[-1].lower()
             )
             pressed_keys.add(key_str)
+
             if HOTKEY.issubset(pressed_keys):
                 logging.info(translate("Горячая клавиша нажата! Запускаю обработку..."))
                 asyncio.run_coroutine_threadsafe(on_trigger(), loop)
@@ -130,18 +132,10 @@ async def main():
         )
         pressed_keys.discard(key_str)
 
-    # Очистка предыдущих скриншотов
-    for file in os.listdir(SESSION_DIR):
-        try:
-            os.remove(os.path.join(SESSION_DIR, file))
-        except Exception as e:
-            logging.error(f"{translate('Ошибка удаления файла:')} {file} - {e}")
-
-    logging.info(f"{translate('Папка очищена:')} {SESSION_DIR}")
-
     with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
-        await asyncio.get_event_loop().run_in_executor(None, listener.join)
+        await asyncio.get_running_loop().run_in_executor(None, listener.join)
 
 
+# Запуск
 if __name__ == "__main__":
     asyncio.run(main())
