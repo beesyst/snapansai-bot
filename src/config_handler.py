@@ -17,8 +17,8 @@ class ConfigHandler:
     _language = "en"
 
     @classmethod
-    def save_value(cls, path, value):
-        """Сохраняет значение в config.json"""
+    def save_value(cls, path, value, log=True):
+        """Сохраняет значение в config.json, опционально логирует изменения"""
         cls.load_config()
 
         keys = path.split(".")
@@ -34,7 +34,8 @@ class ConfigHandler:
         try:
             with open(cls.CONFIG_PATH, "w", encoding="utf-8") as file:
                 json.dump(cls._config, file, indent=2, ensure_ascii=False)
-            logging.info(f"Значение {path} обновлено в config.json: {value}")
+            if log and path != "telegram.chat_id":
+                logging.info(f"Значение {path} обновлено в config.json: {value}")
         except Exception as e:
             logging.error(f"Ошибка сохранения config.json: {e}")
 
