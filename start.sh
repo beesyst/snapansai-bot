@@ -6,7 +6,7 @@ LOG_FILE="logs/bot.log"
 
 # Функция обновления config.json
 update_config() {
-    jq "$1" "$CONFIG_FILE" > tmp.json && mv tmp.json "$CONFIG_FILE"
+    jq "$1" "$CONFIG_FILE" > tmp.json && mv tmp.json "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
 }
 
 # Запрос языка, если он не задан в config.json

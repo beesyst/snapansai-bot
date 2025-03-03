@@ -26,10 +26,13 @@ async def handle_start(message: types.Message):
     chat_id = message.chat.id
     saved_chat_id = ConfigHandler.get_value("telegram.chat_id", 0)
 
-    if saved_chat_id in [None, 0]:
-        ConfigHandler.save_value("telegram.chat_id", chat_id)
-        logging.info(f"chat_id {chat_id} {translate('автоматически сохранен.')}")
+    if saved_chat_id not in [None, 0]:
+        logging.info(f"chat_id уже сохранен: {saved_chat_id}")
+        await message.answer(translate("Бот уже активирован."))
+        return
 
+    ConfigHandler.save_value("telegram.chat_id", chat_id)
+    logging.info(f"chat_id {chat_id} {translate('автоматически сохранен.')}")
     await message.answer(
         translate("Привет! Отправь мне изображение, и я его обработаю.")
     )

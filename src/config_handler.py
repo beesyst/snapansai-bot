@@ -46,7 +46,8 @@ class ConfigHandler:
             try:
                 with open(cls.CONFIG_PATH, "r", encoding="utf-8") as file:
                     cls._config = json.load(file)
-            except (FileNotFoundError, json.JSONDecodeError):
+            except (FileNotFoundError, json.JSONDecodeError) as e:
+                logging.error(f"Ошибка загрузки config.json: {e}")
                 cls._config = {}
         return cls._config
 

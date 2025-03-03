@@ -1,8 +1,8 @@
 import base64
 import asyncio
+import logging
 from openai import AsyncOpenAI
 from src.config_handler import ConfigHandler
-import logging
 
 
 # Функция перевода строк
@@ -26,52 +26,38 @@ async def process_image(image_path):
 
     client = AsyncOpenAI(api_key=openai_key)
 
-    max_retries = 3
-    attempt = 0
+    try:
+        with open(image_path, "rb") as img:
+            image_bytes = img.read()
+        base64_image = base64.b64encode(image_bytes).decode("utf-8")
 
-    while attempt < max_retries:
-        try:
-            with open(image_path, "rb") as img:
-                image_bytes = img.read()
-            base64_image = base64.b64encode(image_bytes).decode("utf-8")
+        logging.info(f"{translate('Начинаю обработку изображения')}: {image_path}")
 
-            logging.info(f"{translate('Начинаю обработку изображения')}: {image_path}")
-
-            response = await client.chat.completions.create(
-                model=openai_model,
-                messages=[
-                    {
-                        "role": "user",
-                        "content": [
-                            {"type": "text", "text": PROMPT},
-                            {
-                                "type": "image_url",
-                                "image_url": {
-                                    "url": f"data:image/png;base64,{base64_image}",
-                                    "detail": "high",
-                                },
+        response = await client.chat.completions.create(
+            model=openai_model,
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": PROMPT},
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": f"data:image/png;base64,{base64_image}",
+                                "detail": "high",
                             },
-                        ],
-                    }
-                ],
-                max_tokens=300,
-            )
+                        },
+                    ],
+                }
+            ],
+            max_tokens=300,
+        )
 
-            result = response.choices[0].message.content
-            plain_result = result.replace("*", "").replace("_", "").replace("`", "")
+        result = response.choices[0].message.content.strip()
 
-            logging.info(translate("Изображение успешно обработано"))
-            return plain_result
+        logging.info(translate("Изображение успешно обработано"))
+        return result
 
-        except ConnectionResetError as e:
-            attempt += 1
-            logging.error(
-                f"{translate('Ошибка обработки изображения')}: {e}. Повторная попытка ({attempt}/{max_retries})..."
-            )
-            await asyncio.sleep(3)
-
-        except Exception as e:
-            logging.error(f"{translate('Ошибка обработки изображения')}: {e}")
-            return f"{translate('Ошибка обработки изображения')}: {e}"
-
-    return f"{translate('Ошибка обработки изображения')}: {translate('Повторные попытки не помогли')}"
+    except Exception as e:
+        logging.error(f"{translate('Ошибка обработки изображения')}: {e}")
+        return f"{translate('Ошибка обработки изображения')}: {e}"

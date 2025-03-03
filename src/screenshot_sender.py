@@ -16,7 +16,6 @@ def translate(text):
 
 # Определение пути
 SESSION_DIR = "logs/session_temp"
-os.makedirs(SESSION_DIR, exist_ok=True)
 
 logging.info(f"SESSION_DIR: {SESSION_DIR}")
 
@@ -41,11 +40,12 @@ async def take_screenshot():
     global processing
     if processing:
         logging.info(
-            translate("❌ Уже выполняется обработка, повторное нажатие игнорируется.")
+            translate("Уже выполняется обработка, повторное нажатие игнорируется.")
         )
         return None
 
     processing = True
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     screenshot_path = os.path.join(SESSION_DIR, f"screenshot_{timestamp}.png")
 
