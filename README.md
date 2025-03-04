@@ -1,135 +1,122 @@
 # 📸 SnapAnsAI Bot
 
-## 📌 Описание проекта
+## 📌 Project Description
 
-**SnapAnsAI Bot** — инструмент для мгновенного получения ответов на основе скриншотов. Пользователь нажимает горячую клавишу, скриншот автоматически отправляется в Telegram-бот, который с помощью **OpenAI API** и др. анализирует изображение и возвращает текстовый ответ.
+**SnapAnsAI Bot** is a tool for instant answers based on screenshots. The user presses a hotkey, and the screenshot is automatically sent to a Telegram bot, which analyzes the image using **OpenAI API** and other services, then returns a text response.
 
-## ⚙️ Основные возможности
+## ⚙️ Key Features
 
-✅ **Горячая клавиша** — автоматический захват скриншота (по умолчанию Alt+S).
+✅ **Hotkeys** — automatic screenshot capture (multiple key combinations can be set in `config.json`).
 
-✅ **Автоматическая отправка** изображения в Telegram-бот.
+✅ **Automatic sending** of images to the Telegram bot.
 
-✅ **Выбор AI** — поддержка **OpenAI** и **DeepSeek** для обработки изображений.
+✅ **AI selection** — supports **OpenAI** and **DeepSeek** for image processing.
 
-✅ **Гибкие настройки** в `config.json` (изменение API, горячих клавиш, ОС и пр.).
+✅ **Flexible settings** in `config.json` (modify API, hotkeys, OS settings, etc.).
 
-✅ **Кроссплатформенность**: **Linux, Windows, macOS**
+✅ **Cross-platform compatibility**: **Windows, Linux, macOS** (automatic OS detection).
 
-✅ **Логирование** в `bot.log` для удобной отладки.
+✅ **Logging** in `bot.log` for debugging (all errors and events are recorded in the log).
 
-✅ **Динамическая смена языка** бота через конфигурацию (`ru`, `en`, `de` и др.).
+✅ **Multilingual support** — the bot allows **language switching** via `config.json` and adding new languages in `lang.json`.
 
-## 🌍 Где можно использовать
+## 🌍 Use Cases
 
-📚 **Образование:** Снимки заданий и мгновенные объяснения.
+📚 **Education:** Screenshots of assignments and instant explanations.
 
-💼 **Работа:** Захват важных данных с экрана и быстрый анализ.
+💼 **Work:** Capturing important data from the screen and quick analysis.
 
-🧪 **Исследования:** Извлечение текста из графиков и документов.
+🧪 **Research:** Extracting text from charts and documents.
 
-💬 **Общение:** Обработка текстов и изображений в реальном времени.
+💬 **Communication:** Processing texts and images in real-time.
 
-🏃 **Повседневное использование:** Быстрое получение текста с любых экранов.
+🏃 **Everyday use:** Quickly getting text from any screen.
 
-## 🛠️ Технологический стек
+## 🛠️ Tech Stack
 
-🐍 **Python** — основной язык разработки.
+🐍 **Python** — main programming language.
 
-🤖 **Telegram Bot API** — взаимодействие с ботом.
+🤖 **Telegram Bot API** — bot interaction.
 
-🧠 **OpenAI API / DeepSeek API** — обработка изображений и текста.
+🧠 **OpenAI API / DeepSeek API** — image and text processing.
 
-🖥️ **PyAutoGUI** — захват скриншотов (Windows).
+🖥️ **PyAutoGUI** — screenshot capture (Windows).
 
-🐧 **gnome-screenshot** — захват скриншотов (Ubuntu).
+🐧 **gnome-screenshot** — screenshot capture (Ubuntu).
 
-🍏 **screencapture** — захват скриншотов (macOS).
+🍏 **screencapture** — screenshot capture (macOS).
 
-⌨️ **pynput** — обработчик горячих клавиш.
+⌨️ **pynput** — hotkey handler.
 
-🔗 **Requests** — взаимодействие с API.
+🔗 **Requests** — API interaction.
 
-📜 **Logging** — система логирования.
+📜 **Logging** — logging system.
 
-## 📂 Структура проекта
+## 📂 Project Structure
 
 ``` 
 snapansai-bot/
-│── config/                   # Конфигурационные файлы
-│   ├── config.json           # Файл конфигурации
-│   ├── lang.json             # Файл перевода для мультиязычности
-│── logs/                     # Логи
-│   │── session_temp/         # Временные файлы (скриншоты и кэш)
-│   ├── bot.log               # Лог-файл работы бота
-│── src/                      # Исходный код проекта
-│   ├── ai_api.py             # AI API-обработчик
-│   ├── bot.py                # Основной Telegram-бот
-│   ├── config_handler.py     # Управление конфигурацией (загрузка, сохранение)
-│   ├── screenshot_sender.py  # Скрипт для отправки скриншотов
-│── test/                     # Скрипт для тестирования AI
-│   ├── test_ai.py            # Скрипт запуска проекта
-│── venv/                     # Виртуальное окружение
-│── README.md                 # Документация проекта
-│── requirements.txt          # Файл зависимостей
-│── start.sh                  # Скрипт запуска проекта
+│── config/                   # Configuration files
+│   ├── config.json           # Config file
+│   ├── lang.json             # Translation file for multilingual support
+│── logs/                     # Logs
+│   │── session_temp/         # Temporary files (screenshots and cache)
+│   ├── bot.log               # Bot log file
+│── src/                      # Source code
+│   ├── ai_api.py             # AI API handler
+│   ├── bot.py                # Main Telegram bot
+│   ├── config_handler.py     # Configuration management (loading, saving)
+│   ├── screenshot_sender.py  # Screenshot sending script
+│── test/                     # AI testing script
+│   ├── test_ai.py            # Test script for the project
+│── venv/                     # Virtual environment
+│── README.md                 # Project documentation
+│── requirements.txt          # Dependencies file
+│── start.sh                  # Project startup script
 ```
 
-## 🔧 Установка и запуск
+## 🔧 Installation & Setup
 
-### 🔄 Запуск проекта
+### 🔄 Running the project
 
 ```bash
 bash start.sh
 ```
 
-В процессе установки нужно будет указать:
+During setup, you will need to specify:
 
 - Telegram Bot token
 - OpenAI (DeepSeek) API key
 
-После установки можно нажимать Alt+S - скриншоты будут отправляться в Telegram-бот и обрабатываться ИИ.
+After setup, press the assigned hotkeys, and screenshots will be sent to the Telegram bot for AI processing.
 
-### 🔄 Настройка конфигурации
+### 🔄 Configuration
 
-В `config.json`можно редактировать:
+In `config.json`, you can modify:
 
-- Telegram Bot token
-- Chat ID
-- API key
-- Модель ИИ
-- Промпт
-- Горячие клавиши
-- Команды для ОС
+- `"bot_token": ""` - Telegram Bot API token
+- `"chat_id": 0` - Telegram Chat ID (auto-detected)
+- `"language": ""` - Language (available: en, ru, de)
+- `"api_key": ""` - AI API key (supports OpenAI, DeepSeek)
+- `"hotkey": ""` - Hotkeys (one or multiple, e.g., `"hotkey": "alt+s, ctrl+m, p, /"`).
+- `"os": ""` - OS (auto-detected)
 
-### 🔄 Мультиязычность
+In `lang.json`, you can modify:
 
-Бот поддерживает **переключение языка** через конфиг:
+- `"prompt": ""` - AI prompt
+- Add new languages
 
-- Для добавления новых языков достаточно обновить `lang.json`.
-- Чтобы сменить язык, обнови поле `"language"` в `config.json`.
+## 📌 Future Improvements
 
-## ⚡ Особенности:
+- Testing has been conducted ONLY with OpenAI. Need to test with DeepSeek API.
+- Tested ONLY on Ubuntu 24.04.2 LTS (Wayland). Need to check compatibility with Windows, macOS, and other Linux distributions.
 
-📸 **Горячая клавиша** (Alt+S или другая, заданная в `config.json`).
+💡 If you want to contribute to testing or improvements, I’d be happy to collaborate!
 
-⚙️ **Автоопределение ОС** (Windows, Linux, macOS).
+## 💰 Support the Project
 
-🔒 **Выбор AI**: можно использовать **OpenAI** или **DeepSeek**.
-
-📝 **Логирование**: все ошибки и события записываются в `bot.log`.
-
-
-🌍 **Переключение языка**: легко добавить новые языки.
-
-## 📌 Планируемые улучшения
-
-- Тестирование проводилось ТОЛЬКО на OpenAI. Протестировать бота с DeepSeek API.
-- Тестирование проводилось ТОЛЬКО на Ubuntu 24.04.2 LTS (Wayland). Проверить бота в Windows, macOS и других дистрибутивах Linux.
-
-💡 Если вы хотите помочь с тестированием или улучшением, буду рад!
+If you find this bot useful, you can send **USDT (TRC20)** to the address: **TUQj3sguQjmKFJEMotyb3kERVgnfvhzG7o**
 
 ---
 
-**✨ Разработано для удобства и быстрого доступа к ответам.**
-
+**✨ Designed for convenience and quick access to answers.**

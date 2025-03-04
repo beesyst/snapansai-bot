@@ -45,6 +45,7 @@ async def take_screenshot():
         return None
 
     processing = True
+    os.makedirs(SESSION_DIR, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     screenshot_path = os.path.join(SESSION_DIR, f"screenshot_{timestamp}.png")
@@ -94,13 +95,15 @@ async def process_and_send(screenshot):
 # Основной цикл обработки горячих клавиш
 async def main():
     logging.info(
-        f"{translate('Ожидаем горячую клавишу:')} {ConfigHandler.get_value('screenshot.hotkey')}"
+        f"{translate('Ожидаем горячие клавиши:')} {ConfigHandler.get_value('screenshot.hotkey')}"
     )
 
     pressed_keys = set()
-    HOTKEY = set(
-        ConfigHandler.get_value("screenshot.hotkey", "alt+s").lower().split("+")
-    )
+
+    # Читаем горячие клавиши из конфига
+    hotkeys_raw = ConfigHandler.get_value("screenshot.hotkey", "alt+s")
+    hotkey_sets = [set(hk.strip().lower().split("+")) for hk in hotkeys_raw.split(",")]
+
     loop = asyncio.get_running_loop()
 
     async def on_trigger():
@@ -118,9 +121,14 @@ async def main():
             )
             pressed_keys.add(key_str)
 
-            if HOTKEY.issubset(pressed_keys):
-                logging.info(translate("Горячая клавиша нажата! Запускаю обработку..."))
-                asyncio.run_coroutine_threadsafe(on_trigger(), loop)
+            # Проверяем, совпадает ли какая-то комбинация
+            for hotkey in hotkey_sets:
+                if hotkey.issubset(pressed_keys):
+                    logging.info(
+                        translate("Горячая клавиша нажата! Запускаю обработку...")
+                    )
+                    asyncio.run_coroutine_threadsafe(on_trigger(), loop)
+                    break
         except Exception as e:
             logging.error(f"{translate('Ошибка в обработке нажатия:')} {e}")
 

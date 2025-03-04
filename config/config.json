@@ -1,23 +1,23 @@
 {
   "telegram": {
-    "bot_token": "",
-    "chat_id": 0
+    "bot_token": "7851414934:AAEXWK3fguivIM_1ntvBi_M153ZtppQViw0",
+    "chat_id": 85424801
   },
-  "language": "",
+  "language": "ru",
   "deepseek": {
     "api_key": "",
     "api_url": "https://api.deepseek.com/v1/chat/completions",
     "model": "deepseek-chat"
   },
   "openai": {
-    "api_key": "",
+    "api_key": "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",
     "api_url": "https://api.openai.com/v1/chat/completions",
     "model": "gpt-4o-mini"
   },
   "screenshot": {
     "save_path": "screenshot.png",
-    "hotkey": "alt+s",
-    "os": "",
+    "hotkey": "alt+s, ctrl+b, p, /",
+    "os": "ubuntu",
     "commands": {
       "ubuntu": {
         "unset": "unset GTK_PATH",
