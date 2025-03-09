@@ -10,7 +10,7 @@
     "model": "deepseek-chat"
   },
   "openai": {
-    "api_key": "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",
+    "api_key": "",
     "api_url": "https://api.openai.com/v1/chat/completions",
     "model": "gpt-4o-mini"
   },
