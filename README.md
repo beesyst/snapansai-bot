@@ -32,6 +32,8 @@
 
 🏃 **Everyday use:** Quickly getting text from any screen.
 
+🔍 **Proctoring:** ?
+
 ## 🛠️ Tech Stack
 
 🐍 **Python** — main programming language.
@@ -113,9 +115,11 @@ In `lang.json`, you can modify:
 
 💡 If you want to contribute to testing or improvements, I’d be happy to collaborate!
 
-## 💰 Support the Project
+## 💰 Donate
 
-If you find this bot useful, you can send **USDT (TRC20)** to the address: **TUQj3sguQjmKFJEMotyb3kERVgnfvhzG7o**
+- **USDT (TRC20)**/**USDC (TRC20)**: `TUQj3sguQjmKFJEMotyb3kERVgnfvhzG7o`
+- **SOL (Solana)**: `6VA9oJbkszteTZJbH6mmLioKTSq4r4E3N1bsoPaxQgr4`
+- **XRP (XRP)**: `rDkEZehHFqSjiGdBHsseR64fCcRXuJbgfr`
 
 ---
 
