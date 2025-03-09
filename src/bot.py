@@ -1,6 +1,8 @@
 import asyncio
 import logging
 import requests
+import atexit
+import subprocess
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from src.ai_api import process_image
@@ -20,19 +22,44 @@ bot = Bot(token=ConfigHandler.get_value("telegram.bot_token"))
 dp = Dispatcher()
 
 
+# Глобальная переменная для хранения процесса
+screenshot_process = None
+
+
+# Запуск screenshot_sender.py
+async def start_screenshot_sender():
+    global screenshot_process
+    screenshot_process = subprocess.Popen(
+        ["python3", "-m", "src.screenshot_sender"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+
+
+# Остановка screenshot_sender.py при завершении работы бота
+def stop_screenshot_sender():
+    global screenshot_process
+    if screenshot_process and screenshot_process.poll() is None:
+        logging.info(translate("Остановка screenshot_sender.py..."))
+        screenshot_process.terminate()
+        screenshot_process.wait()
+        logging.info(translate("screenshot_sender.py успешно остановлен."))
+
+
+# Регистрируем обработчик выхода
+atexit.register(stop_screenshot_sender)
+
+
 # Обработчик /start
 @dp.message(Command("start"))
 async def handle_start(message: types.Message):
     chat_id = message.chat.id
     saved_chat_id = ConfigHandler.get_value("telegram.chat_id", 0)
 
-    if saved_chat_id not in [None, 0]:
-        logging.info(f"chat_id уже сохранен: {saved_chat_id}")
-        await message.answer(translate("Бот уже активирован."))
+    if saved_chat_id in [None, 0]:
+        await message.answer(translate("🔔 Бот активирован."))
         return
 
-    ConfigHandler.save_value("telegram.chat_id", chat_id)
-    logging.info(f"chat_id {chat_id} {translate('автоматически сохранен.')}")
     await message.answer(
         translate("Привет! Отправь мне изображение, и я его обработаю.")
     )
@@ -74,6 +101,7 @@ async def handle_media(message: types.Message):
 # Основной запуск бота
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
+    await start_screenshot_sender()
     await dp.start_polling(bot)
 
 

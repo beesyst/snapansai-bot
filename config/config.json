@@ -1,9 +1,9 @@
 {
   "telegram": {
-    "bot_token": "7851414934:AAEXWK3fguivIM_1ntvBi_M153ZtppQViw0",
-    "chat_id": 85424801
+    "bot_token": "",
+    "chat_id": 0
   },
-  "language": "ru",
+  "language": "",
   "deepseek": {
     "api_key": "",
     "api_url": "https://api.deepseek.com/v1/chat/completions",
@@ -16,8 +16,8 @@
   },
   "screenshot": {
     "save_path": "screenshot.png",
-    "hotkey": "alt+s, ctrl+b, p, /",
-    "os": "ubuntu",
+    "hotkey": "alt+s, ctrl+=",
+    "os": "",
     "commands": {
       "ubuntu": {
         "unset": "unset GTK_PATH",

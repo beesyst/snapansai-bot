@@ -1,0 +1,14 @@
+services:
+  snapansai-bot:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: snapansai-bot
+    restart: unless-stopped
+    volumes:
+      - ../config:/app/config
+      - ../src:/app/src
+      - ../logs:/app/logs
+      - ../requirements.txt:/app/requirements.txt
+    environment:
+      - PYTHONUNBUFFERED=1

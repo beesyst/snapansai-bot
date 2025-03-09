@@ -77,9 +77,14 @@ class ConfigHandler:
     @classmethod
     def get_value(cls, path, default=None):
         """Читает значение из конфига без лишних логов"""
-        cls.load_config()
+        try:
+            with open(cls.CONFIG_PATH, "r", encoding="utf-8") as file:
+                config = json.load(file)
+        except (FileNotFoundError, json.JSONDecodeError):
+            return default
+
         keys = path.split(".")
-        value = cls._config
+        value = config
         for key in keys:
             if isinstance(value, dict) and key in value:
                 value = value[key]
