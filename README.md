@@ -2,120 +2,144 @@
 
 ## 📌 Project Description
 
-**SnapAnsAI Bot** is a tool for instant answers based on screenshots. The user presses a hotkey, and the screenshot is automatically sent to a Telegram bot, which analyzes the image using **OpenAI API** and other services, then returns a text response.
+**SnapAnsAI Bot** is a tool for instant answers based on screenshots. The user presses a hotkey, and the screenshot is automatically sent to a Telegram bot, which analyzes the image using **OpenAI API** and returns a text response.
 
 ## ⚙️ Key Features
 
-✅ **Hotkeys** — automatic screenshot capture (multiple key combinations can be set in `config.json`).
+✅ **Hotkeys** — automatic screenshot capture (multiple combinations can be set in `config.json`).  
+✅ **Automatic image sending** to the Telegram bot.  
+✅ **AI Selection** — support for **OpenAI** for image processing.  
+✅ **Flexible settings** in `config.json` (change API, hotkeys, OS, etc.).  
+✅ **Cross-platform**: **Windows, Linux, macOS** (auto-detection of OS).  
+✅ **Logging** in `bot.log` for easy debugging (all errors and events are recorded in the log).  
+✅ **Multilingual support** — the bot supports **language switching** via `config.json` and adding new languages in `lang.json`.
 
-✅ **Automatic sending** of images to the Telegram bot.
+## 🌍 Where It Can Be Used
 
-✅ **AI selection** — supports **OpenAI** and **DeepSeek** for image processing.
-
-✅ **Flexible settings** in `config.json` (modify API, hotkeys, OS settings, etc.).
-
-✅ **Cross-platform compatibility**: **Windows, Linux, macOS** (automatic OS detection).
-
-✅ **Logging** in `bot.log` for debugging (all errors and events are recorded in the log).
-
-✅ **Multilingual support** — the bot allows **language switching** via `config.json` and adding new languages in `lang.json`.
-
-## 🌍 Use Cases
-
-📚 **Education:** Screenshots of assignments and instant explanations.
-
-💼 **Work:** Capturing important data from the screen and quick analysis.
-
-🧪 **Research:** Extracting text from charts and documents.
-
-💬 **Communication:** Processing texts and images in real-time.
-
-🏃 **Everyday use:** Quickly getting text from any screen.
-
+📚 **Education:** Screenshots of tasks and instant explanations.  
+🌝 **Work:** Capturing important on-screen data and quick analysis.  
+🧫 **Research:** Extracting text from charts and documents.  
+💬 **Communication:** Processing text and images in real time.  
+🏃 **Daily use:** Quickly obtaining text from any screen.  
 🔍 **Proctoring:** ?
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-🐍 **Python** — main programming language.
+🐍 **Python** — main programming language.  
+🤖 **Telegram Bot API** — interaction with the bot.  
+🧠 **OpenAI API** — image and text processing.  
+🖥️ **PyAutoGUI** — screenshot capture (Windows).  
+🐧 **gnome-screenshot** — screenshot capture (Ubuntu).  
+🍏 **screencapture** — screenshot capture (macOS).  
+⌨️ **pynput** — hotkey handler.  
+🔗 **Requests** — interaction with APIs.  
+📃 **Logging** — logging system.
 
-🤖 **Telegram Bot API** — bot interaction.
+### 🔐 Integrated Modules:
+- [`flameshot`](https://github.com/flameshot-org/flameshot/) — a screenshot tool
 
-🧠 **OpenAI API / DeepSeek API** — image and text processing.
+## 🧷 Architecture
 
-🖥️ **PyAutoGUI** — screenshot capture (Windows).
+SnapAnsAI Bot consists of several components:
 
-🐧 **gnome-screenshot** — screenshot capture (Ubuntu).
+📌 **System Components:**
 
-🍏 **screencapture** — screenshot capture (macOS).
+1️⃣ **Telegram Bot** — receives AI-processed messages from the bot.  
+2️⃣ **AI Processing Module** — sends images to OpenAI or DeepSeek and retrieves a response.  
+3️⃣ **Screenshot Capture Module** — operates via PyAutoGUI, `gnome-screenshot`, `flameshot`, or `screencapture`.  
+4️⃣ **Logging Module** — records all events and errors in `bot.log`.  
+5️⃣ **Configuration Module** — loads and manages `config.json`.
 
-⌨️ **pynput** — hotkey handler.
+### **🗂️ Project Structure**
 
-🔗 **Requests** — API interaction.
-
-📜 **Logging** — logging system.
-
-## 📂 Project Structure
-
-``` 
+```
 snapansai-bot/
 │── config/                   # Configuration files
-│   ├── config.json           # Config file
+│   ├── config.json           # Configuration file
 │   ├── lang.json             # Translation file for multilingual support
 │── logs/                     # Logs
 │   │── session_temp/         # Temporary files (screenshots and cache)
 │   ├── bot.log               # Bot log file
-│── src/                      # Source code
+│── methods/                  # Screenshot processing modules
+│   ├── flameshot.py          # Screenshot handler via flameshot
+│── src/                      # Project source code
 │   ├── ai_api.py             # AI API handler
 │   ├── bot.py                # Main Telegram bot
 │   ├── config_handler.py     # Configuration management (loading, saving)
 │   ├── screenshot_sender.py  # Screenshot sending script
-│── test/                     # AI testing script
-│   ├── test_ai.py            # Test script for the project
+│── test/                     # AI testing scripts
+│   ├── test_ai.py            # Project launch script
 │── venv/                     # Virtual environment
 │── README.md                 # Project documentation
 │── requirements.txt          # Dependencies file
-│── start.sh                  # Project startup script
+│── start.sh                  # Project launch script
 ```
 
-## 🔧 Installation & Setup
+## ⚙️ How It Works?
 
-### 🔄 Running the project
+🔹 **System Startup**:
+1. The bot starts with `start.sh`.
+2. Initializes the Telegram Bot API token.
+3. Initializes the Chat ID.
+4. Initializes the AI API Key.
+5. Detects the user's OS (Windows/Linux/macOS).
+6. Loads configuration from `config.json`.
+7. Launches the hotkey handler.
+8. Waits for a hotkey press (`alt+s`, `ctrl+m`, etc.).
+
+🔹 **Screenshot Processing**:
+1. When a hotkey is pressed, a screenshot is taken and saved in the temporary folder `logs/session_temp/`.
+2. The image is sent to the AI server for analysis.
+3. The received text response is sent to the Telegram bot.
+4. The screenshot is deleted from the temporary folder.
+
+🔹 **Using `flameshot`**:
+- If `flameshot` is used, the save path can be set in the configuration.
+- To disable pop-up notifications about saving, run:
+```
+flameshot config
+```
+and uncheck `Show desktop notifications` in the General tab.
+
+## 🛠️ Installation & Launch
+
+### 🔄 Launching the Project
 
 ```bash
 bash start.sh
 ```
 
-During setup, you will need to specify:
+During installation, you will need to provide the API key for the Telegram bot and AI. After installation, you can press the hotkeys, and screenshots will be processed by AI and sent to the Telegram bot.
 
-- Telegram Bot token
-- OpenAI (DeepSeek) API key
+### 🔄 Configuration Setup
 
-After setup, press the assigned hotkeys, and screenshots will be sent to the Telegram bot for AI processing.
-
-### 🔄 Configuration
-
-In `config.json`, you can modify:
+In `config.json`, you can edit:
 
 - `"bot_token": ""` - Telegram Bot API token
-- `"chat_id": 0` - Telegram Chat ID (auto-detected)
+- `"chat_id": 0` - Telegram Chat ID (auto-detection)
 - `"language": ""` - Language (available: en, ru, de)
-- `"api_key": ""` - AI API key (supports OpenAI, DeepSeek)
-- `"hotkey": ""` - Hotkeys (one or multiple, e.g., `"hotkey": "alt+s, ctrl+m, p, /"`).
-- `"os": ""` - OS (auto-detected)
+- `"api_key": ""` - AI API key (available: OpenAI, DeepSeek)
+- `"hotkey": ""` - Hotkeys (you can specify one or more, e.g., `"hotkey": "alt+s, ctrl+m, p, /"`)
+- `"os": ""` - OS (auto-detection)
+- `"method":` - Default is "default" — built-in OS screenshot managers are used. Available: `"flameshot"`.
 
-In `lang.json`, you can modify:
+In `lang.json`, you can edit:
 
-- `"prompt": ""` - AI prompt
-- Add new languages
+- `"prompt": ""` - Prompt
+- Add other languages
 
-## 📌 Future Improvements
+## **💀 Roadmap**
 
-- Testing has been conducted ONLY with OpenAI. Need to test with DeepSeek API.
-- Tested ONLY on Ubuntu 24.04.2 LTS (Wayland). Need to check compatibility with Windows, macOS, and other Linux distributions.
+✅ **Improved hotkey processing**  
+✅ **Integration with OpenAI**  
+✅ **Tested on Ubuntu 24.04 (Wayland)**  
+✅ **Flexible configuration via `config.json`**  
+✅ **Added `flameshot` as an alternative method**  
+🔜 **Testing on Windows, MacOS**  
+🔜 **Adding Docker**  
+🔜 **Integration with other AI models (DeepSeek, Claude, Gemini, etc.)**
 
-💡 If you want to contribute to testing or improvements, I’d be happy to collaborate!
-
-## 💰 Donate
+## 💰 Donations
 
 - **USDT (TRC20)**/**USDC (TRC20)**: `TUQj3sguQjmKFJEMotyb3kERVgnfvhzG7o`
 - **SOL (Solana)**: `6VA9oJbkszteTZJbH6mmLioKTSq4r4E3N1bsoPaxQgr4`
