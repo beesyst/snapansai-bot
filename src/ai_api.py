@@ -10,7 +10,7 @@ def translate(text):
     return ConfigHandler.translate(text)
 
 
-# Промпт из lang.json на нужном языке
+# Промпт из lang.json
 ConfigHandler.update_language()
 PROMPT = ConfigHandler.translate("prompt")
 
