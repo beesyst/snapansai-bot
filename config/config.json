@@ -18,6 +18,7 @@
     "save_path": "screenshot.png",
     "hotkey": "alt+s, ctrl+=",
     "os": "",
+    "method": "default",
     "commands": {
       "ubuntu": {
         "unset": "unset GTK_PATH",
@@ -35,7 +36,17 @@
       },
       "fedora": {
         "install": "sudo dnf install -y gnome-screenshot",
-        "run": "/usr/bin/gnome-screenshot -f"
+        "run": "/usr/bin/gnome-screenshot -f screenshot.png"
+      },
+      "flameshot": {
+        "install": "sudo apt update && sudo apt install -y flameshot",
+        "check": "flameshot --version",
+        "run": "flameshot full -p screenshot.png --delay 100 --raw"
+      },
+      "grim": {
+        "install": "sudo apt update && sudo apt install -y grim",
+        "check": "grim --version",
+        "run": "grim screenshot.png"
       }
     }
   }

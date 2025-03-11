@@ -132,7 +132,6 @@ done
 
 # Определение ОС
 OS_SETTING=$(jq -r '.screenshot.os' "$CONFIG_FILE")
-
 if [[ "$OS_SETTING" == "auto" || "$OS_SETTING" == "null" || -z "$OS_SETTING" ]]; then
     UNAME_OUT="$(uname -s)"
     case "${UNAME_OUT}" in
@@ -149,20 +148,37 @@ else
 fi
 
 if [[ "$OS_TYPE" == "unknown" ]]; then
-    echo "$(translate "❌ Ошибка: Чёт непонятная ОС. Подкинь параметр 'os' в config.json.")"
+    echo "❌ Ошибка: ОС не определена. Использую flameshot."
+    METHOD="flameshot"
+else
+    # Определение метода (если default — меняем на текущую ОС)
+    METHOD=$(jq -r '.screenshot.method // "default"' "$CONFIG_FILE")
+    if [[ "$METHOD" == "default" ]]; then
+        METHOD="$OS_TYPE"
+    fi
+fi
+
+# Проверка метода в config.json
+METHOD_EXISTS=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method] // empty' "$CONFIG_FILE")
+
+if [[ -z "$METHOD_EXISTS" ]]; then
+    echo "❌ Ошибка: Метод $METHOD не найден в config.json!"
     exit 1
 fi
 
-# Скрытый сброс
-UNSET_CMD=$(jq -r ".screenshot.commands.$OS_TYPE.unset" "$CONFIG_FILE")
-if [[ "$UNSET_CMD" != "null" && -n "$UNSET_CMD" ]]; then
-    eval "$UNSET_CMD" &> /dev/null
+echo "✅ Выбран метод скриншота: $METHOD"
+
+# Проверяем, есть ли команды в конфиге
+CHECK_CMD=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method].check // empty' "$CONFIG_FILE")
+INSTALL_CMD=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method].install // empty' "$CONFIG_FILE")
+RUN_CMD=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method].run // empty' "$CONFIG_FILE")
+
+if [[ -z "$CHECK_CMD" || -z "$INSTALL_CMD" || -z "$RUN_CMD" ]]; then
+    echo "❌ Ошибка: Метод $METHOD не поддерживается!"
+    exit 1
 fi
 
-# Проверка и установка скриншот-утилиты
-CHECK_CMD=$(jq -r ".screenshot.commands.$OS_TYPE.check" "$CONFIG_FILE")
-INSTALL_CMD=$(jq -r ".screenshot.commands.$OS_TYPE.install" "$CONFIG_FILE")
-
+# Установка и проверка нужного метода скриншотов
 if ! eval "$CHECK_CMD" &> /dev/null; then
     echo "$(translate "💾 Утилу для скринов не нашел — ща закину по-быстрому...")"
     eval "$INSTALL_CMD"
@@ -170,6 +186,13 @@ if ! eval "$CHECK_CMD" &> /dev/null; then
 else
     echo "$(translate "✅ Утилита для скринов уже засетапена!")"
 fi
+
+# Скрытый сброс (если есть)
+UNSET_CMD=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method].unset // empty' "$CONFIG_FILE")
+if [[ -n "$UNSET_CMD" && "$UNSET_CMD" != "empty" ]]; then
+    eval "$UNSET_CMD" &> /dev/null
+fi
+
 
 # Виртуальное окружение
 if [ ! -d "venv" ]; then
