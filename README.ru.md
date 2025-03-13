@@ -119,6 +119,7 @@ bash start.sh
 - `"chat_id": 0` - Telegram Chat ID (автоопределение)
 - `"language": ""` - Язык (доступно en, ru, de)
 - `"api_key": ""` - AI API key (доступно OpenAI, DeepSeek)
+- `"model": ""` - Модель AI (OpenAI: gpt-4o-mini, gpt-4o, o3-mini, gpt-4.5-preview и др)
 - `"hotkey": ""` - Горячие клавиши (можно указать одну или несколько, например: `"hotkey": "alt+s, ctrl+m, p, /"`)
 - `"os": ""` - ОС (автоопределение)
 - `"method":` - По умолчанию стоит "default" - подхватываются встроенные в ОС менеджеры скриншотов. Доступно: `"flameshot"`.

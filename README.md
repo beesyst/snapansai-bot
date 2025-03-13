@@ -119,6 +119,7 @@ In `config.json`, you can edit:
 - `"chat_id": 0` - Telegram Chat ID (auto-detection)
 - `"language": ""` - Language (available: en, ru, de)
 - `"api_key": ""` - AI API key (available: OpenAI, DeepSeek)
+- `"model": ""` - AI model (OpenAI: gpt-4o-mini, gpt-4o, o3-mini, gpt-4.5-preview, etc.)
 - `"hotkey": ""` - Hotkeys (you can specify one or more, e.g., `"hotkey": "alt+s, ctrl+m, p, /"`)
 - `"os": ""` - OS (auto-detection)
 - `"method":` - Default is "default" — built-in OS screenshot managers are used. Available: `"flameshot"`.

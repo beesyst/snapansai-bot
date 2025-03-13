@@ -60,7 +60,7 @@ async def handle_start(message: types.Message):
         await message.answer(translate("🔔 Бот активирован."))
         return
 
-    await message.answer(translate("Отправь мне изображение, и я его обработаю."))
+    await message.answer(translate("📸 Закидывай пикчу, я ее прокачаю!"))
 
 
 # Обработка изображений

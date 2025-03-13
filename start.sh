@@ -66,60 +66,50 @@ while [[ "$BOT_TOKEN" == "null" || -z "$BOT_TOKEN" || ! "$BOT_TOKEN" =~ ^[0-9]+:
 done
 
 if [ "$BOT_TOKEN_WAS_SET" = false ]; then
-    echo "$(translate "✅ Telegram Bot API token найден!")"
+    echo "$(translate "✅ Telegram Bot API token на месте!")"
 fi
 
 # Определение chat_id
 CHAT_ID=$(jq -r '.telegram.chat_id' "$CONFIG_FILE")
 
 if [[ "$CHAT_ID" == "null" || "$CHAT_ID" == "0" || -z "$CHAT_ID" ]]; then
-    # Очищаем старые обновления только если chat_id не установлен
-    echo "$(translate "🔔 Очищаю историю обновлений Telegram...")"
+    echo "$(translate "🧹 Чищу телегу от следов...")"
     LATEST_UPDATE_ID=$(curl -s "https://api.telegram.org/bot$BOT_TOKEN/getUpdates" | jq '.result | map(.update_id) | max // empty')
     if [[ "$LATEST_UPDATE_ID" != "null" && -n "$LATEST_UPDATE_ID" ]]; then
         NEXT_OFFSET=$((LATEST_UPDATE_ID + 1))
         curl -s "https://api.telegram.org/bot$BOT_TOKEN/getUpdates?offset=$NEXT_OFFSET" > /dev/null
     fi
-
-    # Инструкция пользователю
-    echo "$(translate "🔔 Напиши /start в Telegram и возвращайся сюда!")"
-
-    for i in {1..20}; do  # Ждем 100 секунд (по 5 секунд)
+    echo "$(translate "👉 Йо! Залетай в Телегу и жмякни /start! Жду...")"
+    for i in {1..20}; do
         UPDATES=$(curl -s "https://api.telegram.org/bot$BOT_TOKEN/getUpdates?offset=-1")
-
-        # Проверяем, есть ли новые обновления
         if [[ $(echo "$UPDATES" | jq '.result | length') -eq 0 ]]; then
             sleep 5
             continue
         fi
-
-        # Извлекаем chat_id
         CHAT_ID=$(echo "$UPDATES" | jq -r '.result | map(select(.message.chat.id != null)) | last | .message.chat.id')
-
         if [[ "$CHAT_ID" != "null" && "$CHAT_ID" != "0" && -n "$CHAT_ID" ]]; then
             update_config ".telegram.chat_id = $CHAT_ID"
-            echo "$(translate "✅ Chat ID определен:") $CHAT_ID. $(translate "И записан в config.json!")"
-
-            # Отправляем уведомление в Telegram
+            echo "$(translate "🆔 Chat ID четкий: {chat_id}. И забит в config.json!" | sed "s/{chat_id}/$CHAT_ID/")"
             curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
-                 -d "chat_id=$CHAT_ID" -d "text=🔔 Chat ID определен! Перейди снова в бота для дальнейшей установки." > /dev/null
-
+                 -d "chat_id=$CHAT_ID" -d "text=$(translate "✅ Chat ID залутан! Гоу обратно в бота докручивать установку")" > /dev/null
             break
         fi
-
         sleep 5
     done
 
     if [[ -z "$CHAT_ID" || "$CHAT_ID" == "null" || "$CHAT_ID" == "0" ]]; then
-        echo "$(translate "❌ Ошибка: chat_id не определен. Попробуй снова.")"
+        echo "$(translate "❌ Ошибка: Chat ID слился. Давай еще разок.")"
         exit 1
     fi
 else
-    echo "$(translate "✅ Chat ID найден!")"
+    echo "$(translate "✅ Chat ID четкий!")"
 fi
 
 # Запрос AI API-ключа
 API_KEY=$(jq -r '.openai.api_key' "$CONFIG_FILE")
+if [[ -n "$API_KEY" && "$API_KEY" != "null" ]]; then
+    echo "$(translate "✅ API key по кайфу!")"
+fi
 while [[ "$API_KEY" == "null" || -z "$API_KEY" || ! "$API_KEY" =~ ^sk-[A-Za-z0-9_-]{30,}$ ]]; do
     echo "$(translate "🔔 Йо! Подкинь API key от ИИ сюда, плиз:")"
     read -r KEY_INPUT
@@ -143,15 +133,14 @@ if [[ "$OS_SETTING" == "auto" || "$OS_SETTING" == "null" || -z "$OS_SETTING" ]];
     update_config ".screenshot.os = \"$OS_TYPE\""
     echo "$(translate "💽 ОС спалена:") $OS_TYPE"
 else
-    echo "$(translate "✅ ОС определена!")"
+    echo "$(translate "✅ ОС палится!")"
     OS_TYPE="$OS_SETTING"
 fi
 
 if [[ "$OS_TYPE" == "unknown" ]]; then
-    echo "❌ Ошибка: ОС не определена. Использую flameshot."
+    echo "$(translate "❌ Ошибка: Чет непонятная ОС. Поюзаем flameshot.")"
     METHOD="flameshot"
 else
-    # Определение метода (если default — меняем на текущую ОС)
     METHOD=$(jq -r '.screenshot.method // "default"' "$CONFIG_FILE")
     if [[ "$METHOD" == "default" ]]; then
         METHOD="$OS_TYPE"
@@ -162,11 +151,10 @@ fi
 METHOD_EXISTS=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method] // empty' "$CONFIG_FILE")
 
 if [[ -z "$METHOD_EXISTS" ]]; then
-    echo "❌ Ошибка: Метод $METHOD не найден в config.json!"
+    echo "$(translate "❌ Ошибка: Метод {method} потерялся в config.json!" | sed "s/{method}/$METHOD/")"
     exit 1
 fi
-
-echo "✅ Выбран метод скриншота: $METHOD"
+echo "$(translate "✅ Метод скрина: {method}" | sed "s/{method}/$METHOD/")"
 
 # Проверяем, есть ли команды в конфиге
 CHECK_CMD=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method].check // empty' "$CONFIG_FILE")
@@ -174,7 +162,7 @@ INSTALL_CMD=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method].instal
 RUN_CMD=$(jq -r --arg method "$METHOD" '.screenshot.commands[$method].run // empty' "$CONFIG_FILE")
 
 if [[ -z "$CHECK_CMD" || -z "$INSTALL_CMD" || -z "$RUN_CMD" ]]; then
-    echo "❌ Ошибка: Метод $METHOD не поддерживается!"
+    echo "$(translate "❌ Ошибка: Метод {method} не катит!" | sed "s/{method}/$METHOD/")"
     exit 1
 fi
 
@@ -184,7 +172,7 @@ if ! eval "$CHECK_CMD" &> /dev/null; then
     eval "$INSTALL_CMD"
     echo "$(translate "✅ Утила засетапена!")"
 else
-    echo "$(translate "✅ Утилита для скринов уже засетапена!")"
+    echo "$(translate "✅ Утила для скринов уже засетапена!")"
 fi
 
 # Скрытый сброс (если есть)
@@ -214,4 +202,4 @@ fi
 # Запуск bot.py
 nohup python3 -m src.bot > "$LOG_FILE" 2>&1 &
 HOTKEY=$(jq -r '.screenshot.hotkey' "$CONFIG_FILE")
-echo "$(translate "✅ Все четко! Жми") ${HOTKEY} $(translate "и скрин летит в Телегу.")"
+echo "$(translate "🔥 Все четко! Жми {hotkey} и скрин летит в Телегу." | sed "s/{hotkey}/$HOTKEY/")"

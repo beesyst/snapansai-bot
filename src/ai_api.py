@@ -21,8 +21,9 @@ async def process_image(image_path):
     openai_model = ConfigHandler.get_value("openai.model")
 
     if not openai_key or not openai_model:
-        logging.error("Ошибка: отсутствует API-ключ. AI-функционал недоступен.")
-        return translate("Ошибка: API-ключ отсутствует. Проверь config.json.")
+        error_message = translate("Ошибка: API-ключ отсутствует. Проверь config.json.")
+        logging.error(error_message)
+        return error_message
 
     client = AsyncOpenAI(api_key=openai_key)
 

@@ -16,7 +16,7 @@
   },
   "screenshot": {
     "save_path": "screenshot.png",
-    "hotkey": "alt+s, ctrl+=",
+    "hotkey": "alt+s, ctrl+m",
     "os": "",
     "method": "default",
     "commands": {

@@ -5,6 +5,12 @@ import time
 from datetime import datetime
 from src.config_handler import ConfigHandler
 
+
+# Функция перевода строк
+def translate(text):
+    return ConfigHandler.translate(text)
+
+
 # Определение папки для хранения скриншотов
 SESSION_DIR = os.path.abspath("logs/session_temp")
 os.makedirs(SESSION_DIR, exist_ok=True)
@@ -17,12 +23,12 @@ CHECK_CMD = FLAMESHOT_CONFIG.get("check", "")
 SCREENSHOT_CMD = FLAMESHOT_CONFIG.get("run", "")
 
 if not INSTALL_CMD or not CHECK_CMD or not SCREENSHOT_CMD:
-    logging.error("Ошибка: отсутствуют команды для flameshot в config.json!")
+    logging.error(translate("Ошибка: отсутствуют команды для flameshot в config.json!"))
     exit(1)
 
 
+# Проверка установки flameshot
 def check_flameshot_installed():
-    """Проверяет, установлен ли flameshot"""
     try:
         subprocess.run(
             CHECK_CMD,
@@ -36,46 +42,48 @@ def check_flameshot_installed():
         return False
 
 
+# Установка flameshot, если нет
 def install_flameshot():
-    """Пытается установить flameshot, если его нет"""
-    logging.warning("Flameshot не найден, выполняю установку...")
+    logging.warning(translate("Flameshot не найден, выполняю установку..."))
     try:
         subprocess.run(INSTALL_CMD, shell=True, check=True)
-        logging.info("Flameshot успешно установлен.")
+        logging.info(translate("Flameshot успешно установлен."))
     except subprocess.CalledProcessError:
-        logging.error("Ошибка установки flameshot! Установите его вручную.")
+        logging.error(translate("Ошибка установки flameshot! Установите его вручную."))
 
 
+# Делает скриншот с flameshot и возвращает путь к файлу
 def take_screenshot():
-    """Делает скриншот с flameshot и возвращает путь к файлу"""
     if not check_flameshot_installed():
         install_flameshot()
         if not check_flameshot_installed():
-            logging.error("Flameshot не установлен. Скриншот не может быть создан.")
+            logging.error(
+                translate("Flameshot не установлен. Скриншот не может быть создан.")
+            )
             return None
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     screenshot_path = os.path.join(SESSION_DIR, f"screenshot_{timestamp}.png")
 
     try:
-        # Формируем команду из конфига
         command = SCREENSHOT_CMD.replace("screenshot.png", screenshot_path)
 
-        logging.info(f"Выполняю команду: {command}")
+        logging.info(translate("Выполняю команду:") + f" {command}")
         subprocess.run(command, shell=True, check=True)
         subprocess.run("wtype Shift", shell=True, check=False)
 
-        # Ожидание появления файла вместо `time.sleep(1)`
         start_time = time.time()
         while not os.path.exists(screenshot_path):
-            if time.time() - start_time > 3:  # Ждем максимум 3 секунды
-                logging.error(f"Файл не найден после скриншота: {screenshot_path}")
+            if time.time() - start_time > 3:
+                logging.error(
+                    translate("Файл не найден после скриншота:") + f" {screenshot_path}"
+                )
                 return None
             time.sleep(0.1)
 
-        logging.info(f"Скриншот сохранён: {screenshot_path}")
+        logging.info(translate("Скриншот сохранен:") + f" {screenshot_path}")
         return screenshot_path
 
     except subprocess.CalledProcessError as e:
-        logging.error(f"Ошибка при создании скриншота: {e}")
+        logging.error(translate("Ошибка при создании скриншота:") + f" {e}")
         return None
