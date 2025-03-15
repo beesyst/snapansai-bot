@@ -9,6 +9,11 @@ logging.basicConfig(
 )
 
 
+# Функция перевода строк
+def translate(text):
+    return ConfigHandler.translate(text)
+
+
 class ConfigHandler:
     CONFIG_PATH = "config/config.json"
     LANG_PATH = "config/lang.json"
@@ -35,9 +40,11 @@ class ConfigHandler:
             with open(cls.CONFIG_PATH, "w", encoding="utf-8") as file:
                 json.dump(cls._config, file, indent=2, ensure_ascii=False)
             if log and path != "telegram.chat_id":
-                logging.info(f"Значение {path} обновлено в config.json: {value}")
+                logging.info(
+                    translate(f"Значение {path} обновлено в config.json: {value}")
+                )
         except Exception as e:
-            logging.error(f"Ошибка сохранения config.json: {e}")
+            logging.error(f"{translate('Ошибка сохранения config.json')}: {e}")
 
     @classmethod
     def load_config(cls):
@@ -47,7 +54,7 @@ class ConfigHandler:
                 with open(cls.CONFIG_PATH, "r", encoding="utf-8") as file:
                     cls._config = json.load(file)
             except (FileNotFoundError, json.JSONDecodeError) as e:
-                logging.error(f"Ошибка загрузки config.json: {e}")
+                logging.error(f"{translate('Ошибка загрузки config.json')}: {e}")
                 cls._config = {}
         return cls._config
 
@@ -104,8 +111,12 @@ class ConfigHandler:
 
         if not openai_key and not deepseek_key:
             if strict:
-                raise ValueError("Ошибка: отсутствует параметр API в config.json")
+                raise ValueError(
+                    translate("Ошибка: отсутствует параметр API в config.json")
+                )
             else:
-                logging.info("API-ключ отсутствует. Функционал AI временно отключен.")
+                logging.info(
+                    translate("API-ключ отсутствует. Функционал AI временно отключен.")
+                )
                 return False
         return True
