@@ -15,7 +15,7 @@ openai==1.65.4
 propcache==0.3.0
 pydantic==2.10.6
 pydantic_core==2.27.2
-pynput==1.7.8
+pynput==1.8.1
 pyperclip==1.9.0
 PyScreeze==1.0.1
 python-xlib==0.33
